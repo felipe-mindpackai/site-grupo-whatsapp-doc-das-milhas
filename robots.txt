@@ -1,0 +1,7 @@
+# BETA: site fechado para buscadores enquanto houver PLACEHOLDER_BETA.
+# No lançamento, troque as duas linhas abaixo por:
+#   User-agent: *
+#   Allow: /
+#   Sitemap: https://docdasmilhas.com.br/sitemap.xml
+User-agent: *
+Disallow: /

@@ -1,0 +1,1307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Doc das Milhas | Grupo VIP de alertas de passagens no WhatsApp</title>
+    <meta name="description" content="Alertas de passagens baratas, em milhas e em dinheiro, no seu WhatsApp — com o passo a passo para emitir. A partir de R$ 16,42/mês, com 7 dias de garantia.">
+    <!-- BETA: trocar para "index, follow" somente quando não houver nenhum PLACEHOLDER_BETA no site -->
+    <meta name="robots" content="noindex">
+    <meta name="theme-color" content="#0A2A47">
+    <link rel="canonical" href="https://docdasmilhas.com.br/">
+    <link rel="icon" type="image/webp" href="images/icone.webp">
+    <link rel="apple-touch-icon" href="images/icone.png">
+
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Doc das Milhas">
+    <meta property="og:title" content="Doc das Milhas | Pare de descobrir a promoção depois que ela acabou">
+    <meta property="og:description" content="Alertas de passagens baratas, em milhas e em dinheiro, no seu WhatsApp — com o passo a passo para emitir.">
+    <meta property="og:url" content="https://docdasmilhas.com.br/">
+    <meta property="og:image" content="https://docdasmilhas.com.br/images/icone.png">
+    <meta name="twitter:card" content="summary">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        document.documentElement.classList.add("js"); // liga os efeitos (sem JS, tudo aparece normalmente)
+
+        /* =====================================================
+           CONFIGURAÇÃO — o único lugar que precisa ser editado
+           ===================================================== */
+        const SITE = {
+            // Links de checkout da Hotmart (um por plano)
+            checkoutAnual:  "PLACEHOLDER_BETA",
+            checkoutMensal: "PLACEHOLDER_BETA",
+            // ID do Google Tag Manager (ex.: "GTM-ABC1234"). Vazio = GTM não carrega.
+            gtmId: ""
+        };
+
+        /* Consent Mode: tudo negado até a pessoa escolher no banner */
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){ dataLayer.push(arguments); }
+        gtag("consent", "default", {
+            ad_storage: "denied", ad_user_data: "denied", ad_personalization: "denied",
+            analytics_storage: "denied", wait_for_update: 500
+        });
+        try {
+            const salvo = JSON.parse(localStorage.getItem("ddm_consent"));
+            if (salvo) {
+                gtag("consent", "update", {
+                    analytics_storage: salvo.analytics ? "granted" : "denied",
+                    ad_storage: salvo.marketing ? "granted" : "denied",
+                    ad_user_data: salvo.marketing ? "granted" : "denied",
+                    ad_personalization: salvo.marketing ? "granted" : "denied"
+                });
+            }
+        } catch (e) {}
+
+        /* Google Tag Manager (só carrega com gtmId preenchido) */
+        if (SITE.gtmId) {
+            (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer',SITE.gtmId);
+        }
+    </script>
+
+    <style>
+        :root {
+            --navy: #0A2A47;
+            --navy-2: #0F3558;
+            --turquesa: #22B8B0;
+            --turquesa-texto: #0E7C77;   /* turquesa escurecido para texto sobre fundo claro */
+            --amarelo: #E7BB30;
+            --amarelo-2: #F2CC4E;
+            --off-white: #F5F8F8;
+            --cinza: #22384A;
+            --cinza-2: #5B6B79;
+            --linha: #DCE5E8;
+            --branco: #FFFFFF;
+            --radius: 18px;
+            --radius-lg: 26px;
+            --max: 1120px;
+            --header-h: 64px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; }
+        [hidden] { display: none !important; }
+
+        html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--header-h) + 12px); }
+        @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+
+        body {
+            margin: 0;
+            font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--cinza);
+            background: var(--off-white);
+            overflow-x: hidden;
+        }
+
+        img, svg { display: block; max-width: 100%; }
+        a { color: inherit; }
+        h1, h2, h3 { font-family: "Sora", "Inter", sans-serif; color: var(--navy); line-height: 1.15; margin: 0; letter-spacing: -0.02em; }
+        p { margin: 0; }
+
+        .container { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+        .section { padding: 56px 0; }
+        .section-white { background: var(--branco); }
+        .section-navy { background: var(--navy); color: #D7E3EC; }
+        .section-navy h2, .section-navy h3 { color: var(--branco); }
+
+        .eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+            color: var(--turquesa-texto);
+        }
+        .eyebrow::before { content: ""; width: 22px; height: 4px; border-radius: 4px; background: var(--amarelo); }
+        .section-navy .eyebrow { color: var(--turquesa); }
+
+        .section-head { max-width: 680px; margin-bottom: 32px; }
+        .section-head h2 { font-size: clamp(1.6rem, 6vw, 2.4rem); margin-top: 12px; }
+        .section-head p { margin-top: 12px; color: var(--cinza-2); }
+        .section-navy .section-head p { color: #B8CAD8; }
+
+        /* Marcador visual de conteúdo provisório */
+        .ph {
+            display: inline-block; font: 600 11px/1.4 "Inter", sans-serif; letter-spacing: 0.04em;
+            color: #8A5A00; background: #FFF4D1; border: 1px dashed #E7BB30; border-radius: 6px;
+            padding: 2px 6px; vertical-align: middle;
+        }
+
+        /* ---------- Botões ---------- */
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+            width: 100%; min-height: 56px; padding: 14px 22px;
+            border: 0; border-radius: 14px; cursor: pointer;
+            font: 700 16px/1.2 "Sora", sans-serif; text-align: center; text-decoration: none;
+            transition: transform .15s ease, background-color .15s ease, box-shadow .15s ease;
+        }
+        .btn svg { width: 22px; height: 22px; flex: none; }
+        .btn:active { transform: translateY(1px); }
+        .btn-amarelo { background: var(--amarelo); color: var(--navy); box-shadow: 0 8px 24px rgba(231, 187, 48, .28); }
+        .btn-amarelo:hover { background: var(--amarelo-2); }
+        .btn-navy { background: var(--navy); color: var(--branco); }
+        .btn-navy:hover { background: var(--navy-2); }
+        .btn-contorno { background: transparent; color: var(--navy); border: 2px solid var(--navy); }
+        .btn-contorno:hover { background: var(--navy); color: var(--branco); }
+        :focus-visible { outline: 3px solid var(--turquesa); outline-offset: 3px; border-radius: 6px; }
+
+        .microcopy { margin-top: 12px; font-size: 14px; color: var(--cinza-2); text-align: center; }
+        .section-navy .microcopy, .hero .microcopy { color: #A9BDCC; }
+
+        /* ---------- Header ---------- */
+        .site-header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(255, 255, 255, .96);
+            border-bottom: 1px solid var(--linha);
+            backdrop-filter: saturate(160%) blur(8px);
+        }
+        .header-row { height: var(--header-h); display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+        .logo img { height: 40px; width: auto; }
+        .btn-header { width: auto; min-height: 44px; padding: 10px 16px; font-size: 14px; border-radius: 12px; }
+        .btn-header svg { width: 18px; height: 18px; }
+
+        /* ---------- Hero ---------- */
+        .hero { position: relative; overflow: hidden; background: var(--navy); color: #D7E3EC; padding: 28px 0 56px; }
+        .hero-rota { position: absolute; right: -60px; top: 18px; width: 340px; opacity: .55; pointer-events: none; }
+        .hero-grid { position: relative; display: grid; gap: 36px; }
+        .chip {
+            display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px;
+            background: rgba(34, 184, 176, .14); color: #7FE0D9; font-size: 13px; font-weight: 600;
+        }
+        .chip svg { width: 16px; height: 16px; }
+        .hero h1 { margin-top: 16px; color: var(--branco); font-size: clamp(1.85rem, 7.6vw, 3.4rem); font-weight: 800; }
+        .hero h1 em { font-style: normal; color: var(--amarelo); }
+        .hero-sub { margin-top: 14px; font-size: 17px; color: #C9D8E3; max-width: 540px; }
+        .hero-oferta {
+            display: flex; flex-wrap: wrap; align-items: center; gap: 6px 14px; margin: 18px 0 18px;
+            font-size: 15px; color: var(--branco);
+        }
+        .hero-oferta strong { font-family: "Sora", sans-serif; color: var(--amarelo); font-size: 17px; }
+        .hero-oferta span { display: inline-flex; align-items: center; gap: 6px; }
+        .hero-oferta svg { width: 18px; height: 18px; color: var(--turquesa); }
+
+        /* Celular com o alerta (HTML/CSS, sem imagem) */
+        .phone-wrap { display: flex; justify-content: center; }
+        .phone {
+            width: min(320px, 100%); border-radius: 36px; padding: 10px;
+            background: #06192C; box-shadow: 0 30px 60px rgba(0, 0, 0, .35), inset 0 0 0 2px rgba(255,255,255,.06);
+        }
+        .phone-screen { border-radius: 28px; overflow: hidden; background: #E9EFEC; }
+        .phone-top { display: flex; align-items: center; gap: 10px; padding: 12px 14px; background: #0B3B36; color: var(--branco); }
+        .phone-top img { width: 34px; height: 34px; border-radius: 50%; background: var(--branco); padding: 4px; object-fit: contain; }
+        .phone-top strong { display: block; font-size: 14px; line-height: 1.2; }
+        .phone-top small { display: block; font-size: 11px; color: #A6D6D1; }
+        .chat { padding: 14px 12px 16px; display: grid; gap: 10px; }
+        .tag-exemplo {
+            justify-self: center; padding: 3px 10px; border-radius: 999px;
+            background: rgba(10, 42, 71, .08); color: #4A5C6B; font-size: 11px; font-weight: 600;
+        }
+        .bubble {
+            position: relative; justify-self: start; max-width: 94%;
+            background: var(--branco); border-radius: 4px 14px 14px 14px; padding: 10px 12px 18px;
+            font-size: 13px; line-height: 1.5; color: #1E2B36; box-shadow: 0 1px 1px rgba(0,0,0,.08);
+        }
+        .bubble p + p { margin-top: 2px; }
+        .bubble .b-rota { font-weight: 700; color: var(--navy); }
+        .bubble .b-receita { margin-top: 8px; font-weight: 700; color: var(--turquesa-texto); }
+        .bubble ol { margin: 2px 0 0; padding-left: 18px; }
+        .bubble .b-meta { margin-top: 6px; font-size: 11px; color: #6B7A86; }
+        .bubble .b-hora { position: absolute; right: 10px; bottom: 4px; font-size: 10px; color: #8A98A3; }
+
+        /* ---------- Alertas recentes ---------- */
+        .alertas-grid { display: grid; gap: 16px; }
+        .alerta-card {
+            background: var(--branco); border: 1px solid var(--linha); border-radius: var(--radius); padding: 20px;
+        }
+        .alerta-card header { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+        .alerta-card h3 { font-size: 17px; }
+        .alerta-tag { font-size: 12px; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+        .alerta-tag--milhas { background: rgba(34,184,176,.14); color: var(--turquesa-texto); }
+        .alerta-tag--dinheiro { background: #FFF1C7; color: #7A5300; }
+        .alerta-card--dinheiro .alerta-receita { background: #FFF8E3; }
+        .alerta-card--dinheiro .alerta-receita strong { color: #7A5300; }
+        .alerta-card dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 12px; font-size: 15px; }
+        .alerta-card dt { color: var(--cinza-2); }
+        .alerta-card dd { margin: 0; font-weight: 600; color: var(--navy); }
+        .alerta-receita { margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: var(--off-white); font-size: 14px; }
+        .alerta-receita strong { color: var(--turquesa-texto); }
+        .aviso-tarifa { margin-top: 20px; font-size: 14px; color: var(--cinza-2); }
+
+        /* ---------- Como funciona ---------- */
+        .passos { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; position: relative; }
+        .passo { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: 16px; align-items: start; padding: 18px; border-radius: var(--radius); background: var(--off-white); }
+        .passo-icone { width: 56px; height: 56px; border-radius: 16px; display: grid; place-items: center; background: var(--navy); color: var(--turquesa); }
+        .passo-icone svg { width: 28px; height: 28px; }
+        .passo h3 { font-size: 18px; }
+        .passo p { margin-top: 4px; color: var(--cinza-2); font-size: 15px; }
+        .passo-num { font: 700 12px "Sora", sans-serif; color: var(--turquesa-texto); letter-spacing: .08em; }
+
+        /* ---------- Comparativo ---------- */
+        .comparativo { width: 100%; border-collapse: separate; border-spacing: 0; font-size: 14px; background: var(--branco); border-radius: var(--radius); overflow: hidden; border: 1px solid var(--linha); }
+        .comparativo th, .comparativo td { padding: 14px 12px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--linha); }
+        .comparativo tr:last-child td { border-bottom: 0; }
+        .comparativo thead th { font: 700 13px/1.3 "Sora", sans-serif; }
+        .comparativo thead th:first-child { color: var(--cinza-2); background: var(--off-white); }
+        .comparativo thead th:last-child { color: var(--branco); background: var(--navy); }
+        .comparativo td:first-child { color: var(--cinza-2); width: 50%; }
+        .comparativo td:last-child { color: var(--navy); font-weight: 600; background: rgba(34,184,176,.07); }
+        .comparativo td span { display: block; font-size: 12px; font-weight: 500; color: var(--cinza-2); text-transform: uppercase; letter-spacing: .05em; margin-bottom: 2px; }
+        .comparativo td:last-child span { color: var(--turquesa-texto); }
+        .cta-meio { margin-top: 28px; }
+
+        /* ---------- Para quem é ---------- */
+        .publico-grid { display: grid; gap: 16px; }
+        .publico { border-radius: var(--radius); padding: 22px; background: var(--branco); border: 1px solid var(--linha); }
+        .publico h3 { font-size: 18px; margin-bottom: 12px; }
+        .publico ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+        .publico li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; }
+        .publico li svg { width: 22px; height: 22px; margin-top: 2px; }
+        .publico-sim li svg { color: var(--turquesa-texto); }
+        .publico-nao li svg { color: #B0414B; }
+
+        /* ---------- Quem está por trás ---------- */
+        .doc { display: grid; gap: 24px; align-items: center; }
+        .doc-foto {
+            width: 160px; height: 160px; border-radius: 50%; margin: 0 auto;
+            display: grid; place-items: center; background: var(--navy-2); border: 3px dashed var(--turquesa); color: #7FE0D9;
+        }
+        .doc-foto svg { width: 64px; height: 64px; }
+        .doc h2 { font-size: clamp(1.5rem, 5.6vw, 2.2rem); margin-top: 12px; }
+        .doc-texto p { margin-top: 12px; }
+        .assinatura {
+            margin-top: 20px; padding: 16px 18px; border-left: 4px solid var(--amarelo); border-radius: 0 12px 12px 0;
+            background: rgba(255,255,255,.06); font-style: italic; color: var(--branco);
+        }
+        .assinatura b { color: var(--turquesa); font-style: normal; }
+
+        /* ---------- Bônus do plano anual ---------- */
+        .bonus-secao { background: linear-gradient(180deg, var(--off-white) 0%, #FFF8E3 100%); overflow: hidden; }
+        .bonus-grid { display: grid; gap: 36px; align-items: center; }
+        .bonus-livro { position: relative; width: min(260px, 70%); margin: 8px auto 0; aspect-ratio: 520 / 735; }
+        .bonus-livro img { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 4px 10px 10px 4px; }
+        .livro-sumario { transform: translate(16%, 3%) rotate(5deg); box-shadow: 0 12px 30px rgba(10, 42, 71, .18); }
+        .livro-capa { box-shadow: 0 24px 50px rgba(10, 42, 71, .35), inset 6px 0 0 rgba(0,0,0,.15); }
+        .livro-selo {
+            position: absolute; left: -14px; top: -14px; z-index: 2; width: 86px; height: 86px; border-radius: 50%;
+            display: grid; place-items: center; text-align: center;
+            background: var(--amarelo); color: var(--navy); font: 800 12px/1.2 "Sora", sans-serif;
+            box-shadow: 0 8px 20px rgba(231, 187, 48, .45); transform: rotate(-10deg);
+        }
+        .bonus-titulo { font-size: clamp(1.6rem, 6vw, 2.4rem); margin-top: 12px; }
+        .bonus-titulo em { font-style: normal; color: var(--turquesa-texto); }
+        .bonus-lead { margin-top: 12px; color: var(--cinza-2); }
+        .bonus-fatos { list-style: none; margin: 20px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .bonus-fatos li { background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; padding: 12px 8px; text-align: center; }
+        .bonus-fatos strong { display: block; font: 800 1.6rem/1 "Sora", sans-serif; color: var(--navy); }
+        .bonus-fatos span { display: block; margin-top: 4px; font-size: 12px; line-height: 1.3; color: var(--cinza-2); }
+        .bonus-partes { margin: 20px 0 0; padding: 0; list-style: none; counter-reset: parte; display: grid; gap: 10px; font-size: 15px; }
+        .bonus-partes li { counter-increment: parte; display: grid; grid-template-columns: 28px 1fr; gap: 10px; }
+        .bonus-partes li::before {
+            content: counter(parte); width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center;
+            background: var(--navy); color: var(--amarelo); font: 700 13px "Sora", sans-serif;
+        }
+        .bonus-partes b { color: var(--navy); }
+        .mapas-titulo { margin: 48px 0 16px; font-size: clamp(1.15rem, 4.6vw, 1.5rem); }
+        .mapas-grid { display: grid; gap: 14px; }
+        .mapa { margin: 0; background: var(--branco); border: 1px solid var(--linha); border-radius: var(--radius); overflow: hidden; }
+        .mapa img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; padding: 10px; background: #FFFFFF; border-bottom: 1px solid var(--linha); }
+        .mapa figcaption { padding: 14px 16px 16px; font-size: 14px; color: var(--cinza-2); }
+        .mapa figcaption b { display: block; font-family: "Sora", sans-serif; font-size: 16px; color: var(--navy); margin-bottom: 2px; }
+        .bonus-cta { margin-top: 28px; text-align: center; }
+        .plano li.sem-bonus { color: var(--cinza-2); }
+        .plano li.sem-bonus svg { color: #B0414B; }
+
+        /* ---------- Planos ---------- */
+        .planos-grid { display: grid; gap: 18px; }
+        .plano {
+            position: relative; display: flex; flex-direction: column; gap: 14px;
+            background: var(--branco); border: 1px solid var(--linha); border-radius: var(--radius-lg); padding: 26px 22px;
+        }
+        .plano-destaque { border: 2px solid var(--turquesa); box-shadow: 0 20px 40px rgba(10, 42, 71, .12); }
+        .selo {
+            position: absolute; top: -13px; left: 22px; padding: 4px 12px; border-radius: 999px;
+            background: var(--amarelo); color: var(--navy); font: 700 12px/1.4 "Sora", sans-serif; letter-spacing: .04em; text-transform: uppercase;
+        }
+        .plano h3 { font-size: 18px; }
+        .preco { display: flex; align-items: baseline; gap: 6px; color: var(--navy); }
+        .preco strong { font: 800 clamp(2.2rem, 10vw, 2.8rem)/1 "Sora", sans-serif; letter-spacing: -0.03em; }
+        .preco span { font-size: 16px; color: var(--cinza-2); }
+        .preco-nota { font-size: 15px; color: var(--cinza-2); margin-top: -6px; }
+        .preco-nota b { color: var(--turquesa-texto); }
+        .plano ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; font-size: 15px; }
+        .plano li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; }
+        .plano li svg { width: 20px; height: 20px; margin-top: 2px; color: var(--turquesa-texto); }
+        .plano li.bonus { padding: 10px 12px; margin: 0 -4px; border-radius: 12px; background: #FFF6DA; }
+        .plano li.bonus svg { color: #A87A00; }
+        .plano .btn { margin-top: auto; }
+
+        .garantias { display: grid; gap: 12px; margin-top: 24px; }
+        .garantia { display: grid; grid-template-columns: 40px 1fr; gap: 12px; align-items: start; padding: 16px; border-radius: var(--radius); background: var(--off-white); font-size: 15px; }
+        .garantia svg { width: 32px; height: 32px; color: var(--turquesa-texto); }
+        .garantia strong { color: var(--navy); }
+        .aviso-telefone {
+            display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start;
+            margin-top: 12px; padding: 16px; border-radius: var(--radius);
+            background: #FFF4D1; border-left: 5px solid var(--amarelo); color: var(--navy); font-size: 15px;
+        }
+        .aviso-telefone svg { width: 26px; height: 26px; color: var(--navy); }
+        .checkout-pendente { margin-top: 12px; padding: 12px 14px; border-radius: 12px; background: #FDE8EA; color: #7A1F28; font-size: 14px; }
+
+        /* ---------- FAQ ---------- */
+        .faq { display: grid; gap: 10px; max-width: 820px; }
+        .faq details { background: var(--branco); border: 1px solid var(--linha); border-radius: 14px; }
+        .faq summary {
+            list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+            padding: 16px 18px; min-height: 56px; font-weight: 600; color: var(--navy);
+        }
+        .faq summary::-webkit-details-marker { display: none; }
+        .faq summary::after { content: "+"; flex: none; font: 600 22px/1 "Sora", sans-serif; color: var(--turquesa-texto); transition: transform .2s ease; }
+        .faq details[open] summary::after { transform: rotate(45deg); }
+        .faq details p { padding: 0 18px 18px; color: var(--cinza-2); font-size: 15px; }
+        .faq a { color: var(--turquesa-texto); font-weight: 600; }
+
+        /* ---------- CTA final ---------- */
+        .final { text-align: center; }
+        .final h2 { font-size: clamp(1.7rem, 6.6vw, 2.6rem); max-width: 720px; margin: 12px auto 0; }
+        .final p.lead { margin: 14px auto 24px; max-width: 560px; color: #B8CAD8; }
+        .final .btn { max-width: 460px; }
+        .final .aviso-telefone { max-width: 560px; margin: 20px auto 0; text-align: left; }
+
+        /* ---------- Footer ---------- */
+        .footer { background: #061D33; color: #A9BDCC; padding: 44px 0 104px; font-size: 14px; } /* espaço para o CTA fixo do celular */
+        .footer-logo { height: 44px; width: auto; filter: brightness(0) invert(1); opacity: .95; }
+        .footer-grid { display: grid; gap: 24px; }
+        .footer .tagline { margin-top: 14px; color: #D7E3EC; }
+        .footer .tagline b { color: var(--turquesa); }
+        .footer h4 { margin: 0 0 10px; font: 700 13px "Sora", sans-serif; text-transform: uppercase; letter-spacing: .08em; color: var(--branco); }
+        .footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+        .footer a, .footer button.link {
+            display: inline-flex; align-items: center; min-height: 44px; color: #D7E3EC; text-decoration: none;
+            background: none; border: 0; padding: 0; font: inherit; cursor: pointer;
+        }
+        .footer a:hover, .footer button.link:hover { color: var(--turquesa); }
+        .footer-bottom { margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.08); display: grid; gap: 8px; font-size: 13px; }
+
+        /* ---------- CTA fixo (só celular) ---------- */
+        .sticky-cta {
+            position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+            padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+            background: rgba(10, 42, 71, .97); box-shadow: 0 -8px 24px rgba(0,0,0,.18);
+            transform: translateY(110%); transition: transform .25s ease;
+        }
+        .sticky-cta.is-visible { transform: translateY(0); }
+        .sticky-cta .btn { min-height: 52px; font-size: 15px; }
+
+        /* ---------- Banner de cookies ---------- */
+        .cookies {
+            position: fixed; left: 8px; right: 8px; bottom: calc(8px + env(safe-area-inset-bottom)); z-index: 60;
+            max-width: 560px; margin: 0 auto; padding: 14px 16px; border-radius: 16px;
+            background: var(--branco); color: var(--cinza); box-shadow: 0 16px 48px rgba(6, 25, 44, .28);
+            font-size: 13px; line-height: 1.5;
+        }
+        .cookies strong { display: block; font-family: "Sora", sans-serif; color: var(--navy); margin-bottom: 2px; font-size: 14px; }
+        .cookies a { color: var(--turquesa-texto); font-weight: 600; }
+        .cookies-acoes { display: grid; grid-template-columns: 1fr 1fr auto; gap: 8px; margin-top: 10px; }
+        .cookies-acoes .btn { min-height: 44px; font-size: 13px; padding: 8px 10px; border-radius: 12px; width: 100%; }
+        .cookies-acoes .btn-link { width: auto; background: none; color: var(--turquesa-texto); text-decoration: underline; padding: 8px 4px; }
+        .cookies-acoes .btn-full { grid-column: 1 / -1; }
+        .cookies-prefs { margin-top: 14px; display: grid; gap: 10px; }
+        .cookies-prefs label { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; }
+        .cookies-prefs input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--turquesa-texto); }
+        .cookies-prefs small { display: block; color: var(--cinza-2); }
+
+        /* =========================================
+           TABLET (768px+)
+           ========================================= */
+        @media (min-width: 768px) {
+            :root { --header-h: 72px; }
+            .container { padding: 0 32px; }
+            .section { padding: 88px 0; }
+            .logo img { height: 48px; }
+            .btn { width: auto; }
+            .hero { padding: 64px 0 88px; }
+            .hero-rota { width: 520px; right: -40px; top: 10px; }
+            .hero .btn-amarelo { min-width: 380px; }
+            .hero .microcopy { text-align: left; }
+            .alertas-grid { grid-template-columns: repeat(3, 1fr); }
+            .passos { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .passo { grid-template-columns: 1fr; padding: 24px; }
+            .comparativo { font-size: 15px; }
+            .comparativo th, .comparativo td { padding: 16px 20px; }
+            .publico-grid { grid-template-columns: 1fr 1fr; }
+            .doc { grid-template-columns: 220px 1fr; gap: 40px; }
+            .doc-foto { width: 220px; height: 220px; }
+            .bonus-grid { grid-template-columns: 280px 1fr; gap: 64px; }
+            .bonus-livro { width: 100%; margin: 0; }
+            .mapas-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .planos-grid { grid-template-columns: 1fr 1fr; align-items: stretch; max-width: 880px; }
+            .plano { padding: 32px 28px; }
+            .plano .btn { width: 100%; }
+            .garantias { grid-template-columns: 1fr 1fr; max-width: 880px; }
+            .aviso-telefone { max-width: 880px; }
+            .footer-grid { grid-template-columns: 1.4fr 1fr 1fr; }
+            .sticky-cta { display: none; }
+            .footer { padding-bottom: 28px; }
+            .cookies { left: 24px; right: auto; bottom: 24px; }
+        }
+
+        /* =========================================
+           DESKTOP (1080px+)
+           ========================================= */
+        @media (min-width: 1080px) {
+            .hero-grid { grid-template-columns: 1.15fr .85fr; align-items: center; gap: 56px; }
+            .hero-sub { font-size: 19px; }
+            .phone-wrap { justify-content: flex-end; }
+            .planos-grid, .garantias, .aviso-telefone { margin-left: auto; margin-right: auto; }
+            #planos .section-head { margin-left: auto; margin-right: auto; text-align: center; }
+        }
+
+        /* =========================================
+           EFEITOS (leves; desligados em "reduzir movimento")
+           ========================================= */
+        :root { --ease: cubic-bezier(.22, 1, .36, 1); }
+
+        @keyframes subir { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+        @keyframes surgir-celular { from { opacity: 0; transform: translateY(28px) rotate(-2deg) scale(.97); } to { opacity: 1; transform: none; } }
+        @keyframes bolha { from { opacity: 0; transform: translateY(8px) scale(.92); } to { opacity: 1; transform: none; } }
+        @keyframes digitando-janela { 0% { opacity: 0; } 15%, 85% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+        @keyframes ponto { 0%, 60%, 100% { transform: translateY(0); opacity: .45; } 30% { transform: translateY(-4px); opacity: 1; } }
+        @keyframes rota-fluxo { to { stroke-dashoffset: -140; } }
+        @keyframes flutuar { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(3px, -5px); } }
+        @keyframes brilho { 0%, 72% { left: -60%; } 100% { left: 130%; } }
+        @keyframes livro { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        @keyframes selo { 0%, 100% { transform: rotate(-10deg) scale(1); } 50% { transform: rotate(-10deg) scale(1.06); } }
+
+        /* Entrada do hero, em sequência */
+        .js .hero-grid > div:first-child > * { animation: subir .7s var(--ease) both; }
+        .js .hero-grid > div:first-child > :nth-child(2) { animation-delay: .08s; }
+        .js .hero-grid > div:first-child > :nth-child(3) { animation-delay: .16s; }
+        .js .hero-grid > div:first-child > :nth-child(4) { animation-delay: .24s; }
+        .js .hero-grid > div:first-child > :nth-child(5) { animation-delay: .32s; }
+        .js .hero-grid > div:first-child > :nth-child(6) { animation-delay: .38s; }
+        .js .phone { animation: surgir-celular .9s var(--ease) .3s both; }
+
+        /* Celular: "digitando…" e depois a mensagem chega */
+        .chat { position: relative; }
+        .digitando {
+            position: absolute; left: 12px; top: 46px; display: flex; gap: 4px; padding: 10px 12px;
+            background: var(--branco); border-radius: 4px 14px 14px 14px; opacity: 0; pointer-events: none;
+        }
+        .digitando span { width: 7px; height: 7px; border-radius: 50%; background: #8A98A3; }
+        .js .digitando { animation: digitando-janela 1.3s ease .9s both; }
+        .js .digitando span { animation: ponto 1s ease-in-out infinite; }
+        .js .digitando span:nth-child(2) { animation-delay: .15s; }
+        .js .digitando span:nth-child(3) { animation-delay: .3s; }
+        .js .bubble { transform-origin: top left; animation: bolha .5s var(--ease) 2.2s both; }
+
+        /* Rota pontilhada "voando" e avião flutuando */
+        .rota-linha { animation: rota-fluxo 9s linear infinite; }
+        .rota-aviao { animation: flutuar 3.2s ease-in-out infinite; }
+
+        /* Header ganha sombra ao rolar */
+        .site-header { transition: box-shadow .3s ease; }
+        .site-header.is-scrolled { box-shadow: 0 8px 24px rgba(10, 42, 71, .08); }
+
+        /* Botões: levantam no hover, afundam no clique, brilho nos principais */
+        .btn { position: relative; overflow: hidden; transition: transform .25s var(--ease), box-shadow .25s ease, background-color .2s ease, color .2s ease; }
+        .btn:active { transform: translateY(1px) scale(.98); }
+        .hero .btn-amarelo::after, .plano-destaque .btn::after, .sticky-cta .btn::after, .bonus-cta .btn::after {
+            content: ""; position: absolute; top: 0; left: -60%; width: 40%; height: 100%; pointer-events: none;
+            background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .55), transparent);
+            transform: skewX(-20deg); animation: brilho 5s ease-in-out 2.5s infinite;
+        }
+
+        /* Surgimento gradual ao rolar */
+        .js .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s var(--ease), transform .7s var(--ease); transition-delay: var(--delay, 0s); }
+        .js .reveal.is-visible { opacity: 1; transform: none; }
+
+        /* Cards reagem ao mouse (só em quem tem mouse) */
+        .alerta-card, .plano, .mapa, .publico, .passo, .garantia { transition: transform .3s var(--ease), box-shadow .3s ease, border-color .3s ease; }
+        @media (hover: hover) {
+            .btn:hover { transform: translateY(-2px); }
+            .btn:hover:active { transform: translateY(1px) scale(.98); }
+            .btn-amarelo:hover { box-shadow: 0 14px 32px rgba(231, 187, 48, .45); }
+            .btn-navy:hover, .btn-contorno:hover { box-shadow: 0 12px 28px rgba(10, 42, 71, .22); }
+            .alerta-card:hover, .mapa:hover, .publico:hover, .passo:hover, .garantia:hover { transform: translateY(-4px); box-shadow: 0 18px 38px rgba(10, 42, 71, .10); }
+            .plano:hover { transform: translateY(-6px); box-shadow: 0 24px 48px rgba(10, 42, 71, .14); }
+            .mapa img { transition: transform .5s var(--ease); }
+            .mapa:hover img { transform: scale(1.04); }
+            .faq summary { transition: background-color .2s ease; }
+            .faq summary:hover { background: rgba(34, 184, 176, .06); }
+        }
+
+        /* Livro do bônus flutuando + selo pulsando */
+        .livro-capa { animation: livro 6s ease-in-out infinite; }
+        .livro-selo { animation: selo 2.8s ease-in-out infinite; }
+
+        /* FAQ: conteúdo abre suave (JS anima a altura) */
+        .faq details p { overflow: hidden; }
+        .faq details.fechando summary::after { transform: rotate(0deg); }
+
+        /* Banner de cookies sobe depois do hero */
+        .cookies:not([hidden]) { animation: subir .5s var(--ease) 1.2s both; }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { transition: none !important; animation: none !important; }
+            .js .reveal { opacity: 1; transform: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ÍCONES (SVG reutilizáveis) -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.47-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.41.25-.7.25-1.29.18-1.41-.08-.13-.28-.2-.57-.35m-5.42 7.4h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.69 1.45h.01c6.55 0 11.89-5.34 11.89-11.89a11.82 11.82 0 0 0-3.48-8.41Z"/></symbol>
+        <symbol id="i-aviao" viewBox="0 0 24 24"><path fill="currentColor" d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+        <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></symbol>
+        <symbol id="i-escudo" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7.5 3v5.5c0 4.6-3.2 8.3-7.5 9.5-4.3-1.2-7.5-4.9-7.5-9.5V6L12 3z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></g></symbol>
+        <symbol id="i-porta" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h4a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-4"/><path d="M9 16l-4-4 4-4M5 12h11"/></g></symbol>
+        <symbol id="i-celular" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></g></symbol>
+        <symbol id="i-cartao" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></g></symbol>
+        <symbol id="i-sino" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></g></symbol>
+        <symbol id="i-receita" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/></g></symbol>
+        <symbol id="i-presente" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="17" height="4" rx="1"/><path d="M5 12v8.5h14V12M12 8v12.5M12 8c-1.5-3.5-5.5-3.5-5.5-1S10 8 12 8zm0 0c1.5-3.5 5.5-3.5 5.5-1S14 8 12 8z"/></g></symbol>
+        <symbol id="i-pessoa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></g></symbol>
+    </svg>
+
+    <!-- HEADER -->
+    <header class="site-header">
+        <div class="container header-row">
+            <a class="logo" href="#topo" aria-label="Doc das Milhas — início">
+                <img src="images/logo.webp" alt="Doc das Milhas" width="480" height="261">
+            </a>
+            <a class="btn btn-amarelo btn-header" href="#planos">
+                <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                Entrar no grupo VIP
+            </a>
+        </div>
+    </header>
+
+    <main id="topo">
+
+        <!-- HERO -->
+        <section class="hero" aria-labelledby="titulo-hero">
+            <svg class="hero-rota" viewBox="0 0 520 260" aria-hidden="true">
+                <path class="rota-linha" d="M10 250 C 140 60, 300 240, 470 60" fill="none" stroke="#22B8B0" stroke-width="3" stroke-dasharray="2 12" stroke-linecap="round"/>
+                <g transform="translate(462 34) rotate(40)" fill="#22B8B0"><use class="rota-aviao" href="#i-aviao" width="34" height="34"/></g>
+            </svg>
+
+            <div class="container hero-grid">
+                <div>
+                    <span class="chip">
+                        <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                        Grupo VIP no WhatsApp
+                    </span>
+                    <h1 id="titulo-hero">Pare de descobrir a promoção depois que ela <em>acabou.</em></h1>
+                    <p class="hero-sub">Alertas de passagens baratas, em milhas e em dinheiro, no seu WhatsApp — com o passo a passo para emitir.</p>
+
+                    <div class="hero-oferta">
+                        <span>A partir de <strong>R$ 16,42/mês</strong></span>
+                        <span><svg aria-hidden="true"><use href="#i-escudo"/></svg> 7 dias de garantia</span>
+                    </div>
+
+                    <a class="btn btn-amarelo" href="#planos">
+                        <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                        Quero entrar no grupo VIP do WhatsApp
+                    </a>
+                    <p class="microcopy">Pagamento seguro pela Hotmart. Cancele quando quiser.</p>
+                </div>
+
+                <div class="phone-wrap">
+                    <div class="phone" role="img" aria-label="Exemplo de alerta do Doc das Milhas no WhatsApp, com rota, preço em milhas e em dinheiro e a receita de emissão">
+                        <div class="phone-screen">
+                            <div class="phone-top">
+                                <img src="images/icone.webp" alt="" width="34" height="34">
+                                <div>
+                                    <strong>Doc das Milhas VIP</strong>
+                                    <small>Somente administradores enviam mensagens</small>
+                                </div>
+                            </div>
+                            <div class="chat">
+                                <span class="tag-exemplo">Exemplo ilustrativo</span>
+                                <div class="digitando" aria-hidden="true"><span></span><span></span><span></span></div>
+                                <div class="bubble">
+                                    <p class="b-rota">✈️ São Paulo (GRU) → Lisboa (LIS)</p>
+                                    <p>💳 <b>Milhas:</b> 70.000 + R$ 480 de taxas</p>
+                                    <p>💰 <b>Dinheiro:</b> a partir de R$ 3.290</p>
+                                    <p>📅 Datas: março a junho/2027</p>
+                                    <p class="b-receita">🧾 RECEITA</p>
+                                    <ol>
+                                        <li>Programa: Smiles (voo TAP)</li>
+                                        <li>Onde buscar: app da Smiles</li>
+                                        <li>Faltam milhas? Transfira do cartão com bônus</li>
+                                    </ol>
+                                    <p class="b-meta">Ida e volta · valores sujeitos a mudança</p>
+                                    <span class="b-hora">09:41 ✓✓</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXEMPLOS DE ALERTAS — valores ilustrativos; trocar por alertas reais do beta quando houver -->
+        <section class="section" id="alertas" aria-labelledby="titulo-alertas">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Exemplos de alertas</span>
+                    <h2 id="titulo-alertas">Cada alerta vem com a receita para emitir.</h2>
+                    <p>Nada de só “olha que barato”. Você recebe a rota, o preço em milhas e em dinheiro e o passo a passo.</p>
+                </div>
+
+                <div class="alertas-grid">
+                    <article class="alerta-card">
+                        <header>
+                            <h3>São Paulo → Lisboa</h3>
+                            <span class="alerta-tag alerta-tag--milhas">Milhas</span>
+                        </header>
+                        <dl>
+                            <dt>Milhas</dt><dd>70.000 + R$ 480 de taxas</dd>
+                            <dt>Trecho</dt><dd>GRU → LIS, ida e volta</dd>
+                            <dt>Datas</dt><dd>março a junho/2027</dd>
+                        </dl>
+                        <p class="alerta-receita"><strong>Receita:</strong> Smiles, voo da TAP. Faltam milhas? Transfira pontos do cartão durante a promoção de bônus.</p>
+                    </article>
+                    <article class="alerta-card alerta-card--dinheiro">
+                        <header>
+                            <h3>São Paulo → Salvador</h3>
+                            <span class="alerta-tag alerta-tag--dinheiro">Dinheiro</span>
+                        </header>
+                        <dl>
+                            <dt>Preço</dt><dd>a partir de R$ 389</dd>
+                            <dt>Trecho</dt><dd>GRU → SSA, ida e volta</dd>
+                            <dt>Datas</dt><dd>abril a junho/2027</dd>
+                        </dl>
+                        <p class="alerta-receita"><strong>Receita:</strong> comprar direto no site da companhia; as datas mais baratas caem de terça a quinta.</p>
+                    </article>
+                    <article class="alerta-card">
+                        <header>
+                            <h3>Rio → Buenos Aires</h3>
+                            <span class="alerta-tag alerta-tag--milhas">Milhas</span>
+                        </header>
+                        <dl>
+                            <dt>Milhas</dt><dd>24.000 + R$ 290 de taxas</dd>
+                            <dt>Trecho</dt><dd>GIG → EZE, ida e volta</dd>
+                            <dt>Datas</dt><dd>maio a agosto/2027</dd>
+                        </dl>
+                        <p class="alerta-receita"><strong>Receita:</strong> LATAM Pass. Complete as milhas com transferência bonificada do cartão de crédito.</p>
+                    </article>
+                </div>
+
+                <p class="aviso-tarifa">Exemplos ilustrativos com valores de referência. Nos alertas do grupo, cada oportunidade vem com data e hora — preços e disponibilidade mudam rápido.</p>
+            </div>
+        </section>
+
+        <!-- COMO FUNCIONA -->
+        <section class="section section-white" aria-labelledby="titulo-como">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Como funciona</span>
+                    <h2 id="titulo-como">Três passos. Nenhuma pesquisa.</h2>
+                </div>
+                <ol class="passos">
+                    <li class="passo">
+                        <div class="passo-icone"><svg aria-hidden="true"><use href="#i-cartao"/></svg></div>
+                        <div>
+                            <span class="passo-num">PASSO 1</span>
+                            <h3>Assine</h3>
+                            <p>Pela Hotmart, em 1 minuto. O link do grupo chega no seu e-mail.</p>
+                        </div>
+                    </li>
+                    <li class="passo">
+                        <div class="passo-icone"><svg aria-hidden="true"><use href="#i-sino"/></svg></div>
+                        <div>
+                            <span class="passo-num">PASSO 2</span>
+                            <h3>Receba no WhatsApp</h3>
+                            <p>Alertas selecionados, sem conversa e sem spam. Só a equipe publica.</p>
+                        </div>
+                    </li>
+                    <li class="passo">
+                        <div class="passo-icone"><svg aria-hidden="true"><use href="#i-receita"/></svg></div>
+                        <div>
+                            <span class="passo-num">PASSO 3</span>
+                            <h3>Emita com a receita</h3>
+                            <p>Cada alerta explica onde buscar e como emitir, em milhas ou em dinheiro.</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+        </section>
+
+        <!-- POR QUE PAGAR SE EXISTEM GRUPOS GRÁTIS -->
+        <section class="section" aria-labelledby="titulo-gratis">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Grátis × VIP</span>
+                    <h2 id="titulo-gratis">Por que pagar se existem grupos grátis?</h2>
+                    <p>Porque o que custa caro não é a assinatura: é o tempo perdido e a promoção que passa.</p>
+                </div>
+
+                <table class="comparativo">
+                    <thead>
+                        <tr><th scope="col">Grupos grátis</th><th scope="col">Doc das Milhas VIP</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span>Volume</span>Dezenas de mensagens por dia</td>
+                            <td><span>Volume</span>Só o que passa na curadoria</td>
+                        </tr>
+                        <tr>
+                            <td><span>Como emitir</span>Você descobre sozinho</td>
+                            <td><span>Como emitir</span>Cada alerta vem com a receita</td>
+                        </tr>
+                        <tr>
+                            <td><span>Conteúdo</span>Hotel, pacote e propaganda misturados</td>
+                            <td><span>Conteúdo</span>Só passagens, em milhas e em dinheiro</td>
+                        </tr>
+                        <tr>
+                            <td><span>Privacidade</span>Grupos abertos podem expor seu número</td>
+                            <td><span>Privacidade</span>Seu número fica oculto para os outros membros</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="cta-meio">
+                    <a class="btn btn-navy" href="#planos">
+                        <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                        Quero entrar no grupo VIP do WhatsApp
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PARA QUEM É -->
+        <section class="section section-white" aria-labelledby="titulo-publico">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Para quem é</span>
+                    <h2 id="titulo-publico">Feito para quem quer viajar mais pagando menos.</h2>
+                </div>
+                <div class="publico-grid">
+                    <div class="publico publico-sim">
+                        <h3>É para você se…</h3>
+                        <ul>
+                            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>viaja pelo menos uma vez por ano;</span></li>
+                            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>tem, ou quer começar a usar, milhas e pontos do cartão;</span></li>
+                            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>não tem tempo de ficar pesquisando passagem;</span></li>
+                            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>viaja de classe econômica e quer pagar menos por isso.</span></li>
+                        </ul>
+                    </div>
+                    <div class="publico publico-nao">
+                        <h3>Não é para você se…</h3>
+                        <ul>
+                            <li><svg aria-hidden="true"><use href="#i-x"/></svg><span>precisa viajar numa data fixa amanhã;</span></li>
+                            <li><svg aria-hidden="true"><use href="#i-x"/></svg><span>quer que alguém emita a passagem por você;</span></li>
+                            <li><svg aria-hidden="true"><use href="#i-x"/></svg><span>procura pacote, hotel ou agência de viagens.</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- QUEM ESTÁ POR TRÁS — preencher com a pessoa real -->
+        <section class="section section-navy" aria-labelledby="titulo-doc">
+            <div class="container doc">
+                <div class="doc-foto" aria-hidden="true">
+                    <svg><use href="#i-pessoa"/></svg>
+                </div>
+                <div class="doc-texto">
+                    <span class="eyebrow">Quem está por trás</span>
+                    <h2 id="titulo-doc">Nome do Doc <span class="ph">PLACEHOLDER_BETA</span></h2>
+                    <p>História curta: quem é, por que começou a caçar passagens e quanto já viajou usando milhas. <span class="ph">PLACEHOLDER_BETA</span></p>
+                    <p class="assinatura">Organização de médico. Paixão por viagens. <b>Método em cada milha.</b></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DEPOIMENTOS — só ativar com depoimentos REAIS e autorizados do beta.
+             Para ativar, remova as marcações de comentário deste bloco.
+        <section class="section section-white" aria-labelledby="titulo-depoimentos">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Quem já está no grupo</span>
+                    <h2 id="titulo-depoimentos">O que dizem os membros do beta</h2>
+                </div>
+                <div class="alertas-grid">
+                    <figure class="alerta-card">
+                        <blockquote>“Depoimento real.”</blockquote>
+                        <figcaption>Nome, cidade</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        -->
+
+        <!-- BÔNUS DO PLANO ANUAL -->
+        <section class="section bonus-secao" id="bonus" aria-labelledby="titulo-bonus">
+            <div class="container">
+                <div class="bonus-grid">
+                    <div class="bonus-livro" aria-hidden="true">
+                        <img class="livro-sumario" src="images/apostila-sumario.webp" alt="" width="520" height="735" loading="lazy">
+                        <img class="livro-capa" src="images/apostila-capa.webp" alt="" width="520" height="735" loading="lazy">
+                        <span class="livro-selo">Grátis no<br>plano anual</span>
+                    </div>
+
+                    <div>
+                        <span class="eyebrow">Bônus do plano anual</span>
+                        <h2 id="titulo-bonus" class="bonus-titulo">Assine o anual e ganhe o kit <em>Milhas sem Mistério</em>.</h2>
+                        <p class="bonus-lead">O grupo mostra a oportunidade. A apostila ensina você a acumular milhas, proteger o que acumulou e trocar na hora certa, para aproveitar cada alerta.</p>
+
+                        <ul class="bonus-fatos" aria-label="Sobre a apostila">
+                            <li><strong>59</strong><span>páginas</span></li>
+                            <li><strong>22</strong><span>capítulos</span></li>
+                            <li><strong>90</strong><span>dias de plano prático</span></li>
+                        </ul>
+
+                        <ol class="bonus-partes">
+                            <li><span><b>Fundamentos</b> — o que são milhas e quanto vale uma milha.</span></li>
+                            <li><span><b>Acumular</b> — cartão certo, gastos do dia a dia, clubes e portais.</span></li>
+                            <li><span><b>Programas</b> — bancos, companhias e transferências bonificadas.</span></li>
+                            <li><span><b>Resgatar</b> — a conta do milheiro e como pesquisar e emitir.</span></li>
+                            <li><span><b>Gestão</b> — os 10 erros mais caros e o plano de 90 dias.</span></li>
+                        </ol>
+                    </div>
+                </div>
+
+                <h3 class="mapas-titulo">+ 3 mapas mentais para consultar na hora de emitir</h3>
+                <div class="mapas-grid">
+                    <figure class="mapa">
+                        <img src="images/mapa-pontos-milhas.webp" alt="Mapa mental Pontos e Milhas: programas de milhas, programas de pontos, acúmulo e valores de referência do milheiro" width="640" height="314" loading="lazy">
+                        <figcaption><b>Pontos e Milhas</b>Programas de milhas e de pontos, acúmulo e valor do milheiro.</figcaption>
+                    </figure>
+                    <figure class="mapa">
+                        <img src="images/mapa-cartoes.webp" alt="Mapa mental Cartões de Crédito: cartões black para começar, alta renda, cartões de companhia aérea e benefícios" width="640" height="456" loading="lazy">
+                        <figcaption><b>Cartões de Crédito</b>Black para começar, alta renda, cobranded e benefícios.</figcaption>
+                    </figure>
+                    <figure class="mapa">
+                        <img src="images/mapa-emissoes.webp" alt="Mapa mental Emissões: companhias aéreas nacionais e internacionais e ferramentas de busca" width="417" height="651" loading="lazy">
+                        <figcaption><b>Emissões</b>Companhias nacionais e internacionais e ferramentas de busca.</figcaption>
+                    </figure>
+                </div>
+
+                <div class="bonus-cta">
+                    <a class="btn btn-amarelo" href="#planos">
+                        <svg aria-hidden="true"><use href="#i-presente"/></svg>
+                        Quero o plano anual com bônus
+                    </a>
+                    <p class="microcopy">Enviado junto com o e-mail de acesso, logo após a aprovação.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLANOS -->
+        <section class="section section-white" id="planos" aria-labelledby="titulo-planos">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Planos</span>
+                    <h2 id="titulo-planos">Escolha seu plano e entre no grupo VIP.</h2>
+                    <p>Os dois planos dão acesso aos mesmos alertas. O anual sai mais barato e vem com bônus.</p>
+                </div>
+
+                <div class="planos-grid">
+                    <article class="plano plano-destaque" aria-labelledby="plano-anual">
+                        <span class="selo">Melhor preço</span>
+                        <h3 id="plano-anual">Plano anual</h3>
+                        <div class="preco"><strong>R$ 197</strong><span>/ano</span></div>
+                        <p class="preco-nota">equivale a <b>R$ 16,42/mês</b> · ou em até 12x no cartão</p>
+                        <ul>
+                            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Todos os alertas no grupo VIP do WhatsApp</span></li>
+                            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Receita de emissão em cada alerta</span></li>
+                            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Passagens em milhas e em dinheiro</span></li>
+                            <li class="bonus"><svg aria-hidden="true"><use href="#i-presente"/></svg><span><b>Bônus:</b> apostila <b>“Milhas sem Mistério”</b> + 3 mapas mentais (Pontos e Milhas, Cartões de Crédito e Emissões)</span></li>
+                        </ul>
+                        <a class="btn btn-amarelo js-checkout" data-plano="anual" data-cta="plano-anual" href="#aviso-telefone">Assinar o plano anual</a>
+                    </article>
+
+                    <article class="plano" aria-labelledby="plano-mensal">
+                        <h3 id="plano-mensal">Plano mensal</h3>
+                        <div class="preco"><strong>R$ 24,90</strong><span>/mês</span></div>
+                        <p class="preco-nota">Pix Automático ou cartão</p>
+                        <ul>
+                            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Todos os alertas no grupo VIP do WhatsApp</span></li>
+                            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Receita de emissão em cada alerta</span></li>
+                            <li><svg aria-hidden="true"><use href="#i-check"/></svg><span>Passagens em milhas e em dinheiro</span></li>
+                            <li class="sem-bonus"><svg aria-hidden="true"><use href="#i-x"/></svg><span>Sem a apostila e os mapas mentais</span></li>
+                        </ul>
+                        <a class="btn btn-contorno js-checkout" data-plano="mensal" data-cta="plano-mensal" href="#aviso-telefone">Assinar o plano mensal</a>
+                    </article>
+                </div>
+
+                <p class="checkout-pendente" id="checkout-pendente" role="status" hidden>
+                    Checkout ainda não configurado. <span class="ph">PLACEHOLDER_BETA — preencher os links da Hotmart em SITE.checkoutAnual e SITE.checkoutMensal</span>
+                </p>
+
+                <div class="garantias">
+                    <div class="garantia">
+                        <svg aria-hidden="true"><use href="#i-escudo"/></svg>
+                        <p><strong>7 dias para testar.</strong> Se não gostar, reembolso total pela Hotmart, sem perguntas.</p>
+                    </div>
+                    <div class="garantia">
+                        <svg aria-hidden="true"><use href="#i-porta"/></svg>
+                        <p><strong>Cancele quando quiser,</strong> direto na Hotmart, sem precisar falar com ninguém.</p>
+                    </div>
+                </div>
+
+                <p class="aviso-telefone" id="aviso-telefone">
+                    <svg aria-hidden="true"><use href="#i-celular"/></svg>
+                    <span><strong>No pagamento, informe o número de WhatsApp que você usará no grupo.</strong> Uma assinatura ativa libera um número.</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section" id="duvidas" aria-labelledby="titulo-faq">
+            <div class="container">
+                <div class="section-head">
+                    <span class="eyebrow">Dúvidas frequentes</span>
+                    <h2 id="titulo-faq">Antes de entrar no grupo.</h2>
+                </div>
+                <div class="faq">
+                    <details>
+                        <summary>O Doc das Milhas vende passagens?</summary>
+                        <p>Não. Nós encontramos as oportunidades e explicamos como emitir. Você compra direto na companhia aérea ou no programa de milhas.</p>
+                    </details>
+                    <details>
+                        <summary>Preciso ter milhas?</summary>
+                        <p>Não. Enviamos também passagens em dinheiro. E, quando o alerta é em milhas, a receita mostra como conseguir as milhas que faltam.</p>
+                    </details>
+                    <details>
+                        <summary>Por que pagar se existem grupos grátis?</summary>
+                        <p>Porque aqui você recebe menos mensagens, só as que valem a pena, e cada uma vem com o passo a passo para emitir.</p>
+                    </details>
+                    <details>
+                        <summary>Onde recebo os alertas?</summary>
+                        <p>Numa Comunidade do WhatsApp, em um grupo onde só a equipe publica. Seu número fica oculto para os outros membros.</p>
+                    </details>
+                    <details>
+                        <summary>Como recebo o acesso depois de pagar?</summary>
+                        <p>Assim que o pagamento é aprovado, a Hotmart envia um e-mail com o link do grupo. Você pede para entrar usando o mesmo número informado na compra.</p>
+                    </details>
+                    <details>
+                        <summary>Paguei por Pix. E agora?</summary>
+                        <p>O e-mail com o link chega assim que a Hotmart confirmar o Pix. Confira também a caixa de spam e a aba Promoções.</p>
+                    </details>
+                    <details>
+                        <summary>Preciso usar o mesmo telefone da compra?</summary>
+                        <p>Sim. Uma assinatura ativa libera um número de WhatsApp.</p>
+                    </details>
+                    <details>
+                        <summary>Quero trocar de número. Como faço?</summary>
+                        <p>Fale com o suporte informando o e-mail da compra e o código da transação. O número antigo é substituído pelo novo.</p>
+                    </details>
+                    <details>
+                        <summary>Quanto tempo leva a aprovação no grupo?</summary>
+                        <p>Até 12 horas, todos os dias, das 8h às 22h.</p>
+                    </details>
+                    <details>
+                        <summary>As tarifas são garantidas?</summary>
+                        <p>Não. Preços e disponibilidade mudam rápido. Por isso cada alerta mostra a data e a hora em que foi encontrado.</p>
+                    </details>
+                    <details>
+                        <summary>Como recebo o bônus do plano anual?</summary>
+                        <p>A apostila “Milhas sem Mistério” e os 3 mapas mentais chegam junto com o e-mail de acesso, logo após a aprovação da compra.</p>
+                    </details>
+                    <details>
+                        <summary>Como cancelo?</summary>
+                        <p>Direto na Hotmart, quando quiser, sem falar com ninguém. Nos primeiros 7 dias, o reembolso é total.</p>
+                    </details>
+                    <details>
+                        <summary>Ficou com outra dúvida?</summary>
+                        <p>Fale com o suporte pelo <a href="https://wa.me/553899591803?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Doc%20das%20Milhas." target="_blank" rel="noopener">WhatsApp (38) 9959-1803</a>.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA FINAL -->
+        <section class="section section-navy final" id="cta-final" aria-labelledby="titulo-final">
+            <div class="container">
+                <span class="eyebrow">Próxima promoção</span>
+                <h2 id="titulo-final">A próxima promoção pode sair hoje. Você vai ficar sabendo a tempo?</h2>
+                <p class="lead">Entre no grupo VIP e receba os alertas com a receita para emitir, direto no seu WhatsApp.</p>
+                <a class="btn btn-amarelo" href="#planos">
+                    <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                    Quero entrar no grupo VIP do WhatsApp
+                </a>
+                <p class="microcopy">7 dias de garantia · Cancele quando quiser</p>
+                <p class="aviso-telefone">
+                    <svg aria-hidden="true"><use href="#i-celular"/></svg>
+                    <span><strong>No pagamento, informe o número de WhatsApp que você usará no grupo.</strong></span>
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <img class="footer-logo" src="images/logo.webp" alt="Doc das Milhas" width="480" height="261" loading="lazy">
+                    <p class="tagline">Organização de médico. Paixão por viagens. <b>Método em cada milha.</b></p>
+                </div>
+                <div>
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="https://wa.me/553899591803?text=Ol%C3%A1%21%20Tenho%20uma%20d%C3%BAvida%20sobre%20o%20Doc%20das%20Milhas." target="_blank" rel="noopener">WhatsApp: (38) 9959-1803</a></li>
+                        <li><span class="ph">PLACEHOLDER_BETA — e-mail de suporte</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4>Informações</h4>
+                    <ul>
+                        <li><a href="politica-de-privacidade.html">Política de Privacidade</a></li>
+                        <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+                        <li><button class="link" type="button" id="abrir-cookies">Preferências de cookies</button></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>O Doc das Milhas é um serviço independente de curadoria de oportunidades. Não somos companhia aérea nem agência de viagens.</p>
+                <p>© 2026 Doc das Milhas · CNPJ <span class="ph">PLACEHOLDER_BETA</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CTA FIXO (só celular) -->
+    <div class="sticky-cta" id="sticky-cta">
+        <a class="btn btn-amarelo" href="#planos" tabindex="-1">
+            <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+            Quero entrar no grupo VIP do WhatsApp
+        </a>
+    </div>
+
+    <!-- BANNER DE COOKIES -->
+    <div class="cookies" id="cookies" role="dialog" aria-live="polite" aria-labelledby="cookies-titulo" hidden>
+        <strong id="cookies-titulo">Cookies</strong>
+        <p>Usamos cookies essenciais e, se você permitir, de análise e marketing. <a href="politica-de-privacidade.html">Saiba mais</a>.</p>
+
+        <div class="cookies-prefs" id="cookies-prefs" hidden>
+            <label><input type="checkbox" checked disabled><span><b>Essenciais</b><small>Necessários para o site funcionar.</small></span></label>
+            <label><input type="checkbox" id="ck-analytics"><span><b>Análise</b><small>Google Analytics: visitas e cliques.</small></span></label>
+            <label><input type="checkbox" id="ck-marketing"><span><b>Marketing</b><small>Google Ads e Meta: medir resultados dos anúncios.</small></span></label>
+        </div>
+
+        <div class="cookies-acoes">
+            <button class="btn btn-navy" type="button" id="ck-aceitar">Aceitar</button>
+            <button class="btn btn-contorno" type="button" id="ck-recusar">Recusar não essenciais</button>
+            <button class="btn btn-link" type="button" id="ck-configurar">Configurar</button>
+            <button class="btn btn-navy btn-full" type="button" id="ck-salvar" hidden>Salvar minhas escolhas</button>
+        </div>
+    </div>
+
+    <script>
+        /* ---------- Checkout Hotmart + parâmetros de campanha ---------- */
+        (function () {
+            const PARAMS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "sck", "gclid", "gbraid", "wbraid", "fbclid"];
+            const pagina = new URLSearchParams(location.search);
+
+            function comParametros(base) {
+                const url = new URL(base);
+                PARAMS.forEach((p) => {
+                    const v = pagina.get(p);
+                    if (v && !url.searchParams.has(p)) url.searchParams.set(p, v);
+                });
+                return url.toString();
+            }
+
+            document.querySelectorAll("a.js-checkout").forEach((a) => {
+                const base = a.dataset.plano === "mensal" ? SITE.checkoutMensal : SITE.checkoutAnual;
+                const pronto = /^https?:\/\//.test(base);
+                if (pronto) a.href = comParametros(base);
+
+                a.addEventListener("click", (ev) => {
+                    window.dataLayer.push({ event: "cta_checkout_click", plano: a.dataset.plano || "", cta: a.dataset.cta || "" });
+                    if (!pronto) {
+                        ev.preventDefault();
+                        const aviso = document.getElementById("checkout-pendente");
+                        aviso.hidden = false;
+                        aviso.scrollIntoView({ block: "center" });
+                    }
+                });
+            });
+        })();
+
+        /* ---------- CTA fixo no celular + banner de cookies ---------- */
+        (function () {
+            const sticky = document.getElementById("sticky-cta");
+            const stickyLink = sticky.querySelector("a");
+            const estado = { hero: true, planos: false, final: false, cookies: false };
+
+            function atualizaSticky() {
+                const mostrar = !estado.hero && !estado.planos && !estado.final && !estado.cookies;
+                sticky.classList.toggle("is-visible", mostrar);
+                stickyLink.tabIndex = mostrar ? 0 : -1;
+            }
+
+            if ("IntersectionObserver" in window) {
+                const alvos = {
+                    hero: document.querySelector(".hero"),
+                    planos: document.getElementById("planos"),
+                    final: document.getElementById("cta-final")
+                };
+                const io = new IntersectionObserver((entries) => {
+                    entries.forEach((e) => {
+                        Object.keys(alvos).forEach((k) => { if (alvos[k] === e.target) estado[k] = e.isIntersecting; });
+                    });
+                    atualizaSticky();
+                });
+                Object.values(alvos).forEach((el) => io.observe(el));
+            }
+
+            const CHAVE = "ddm_consent";
+            const banner = document.getElementById("cookies");
+            const prefs = document.getElementById("cookies-prefs");
+            const btnSalvar = document.getElementById("ck-salvar");
+            const btnConfigurar = document.getElementById("ck-configurar");
+            const ckAnalytics = document.getElementById("ck-analytics");
+            const ckMarketing = document.getElementById("ck-marketing");
+
+            function lerConsentimento() {
+                try { return JSON.parse(localStorage.getItem(CHAVE)); } catch (e) { return null; }
+            }
+
+            function mostrarBanner(comPreferencias) {
+                const atual = lerConsentimento() || { analytics: false, marketing: false };
+                ckAnalytics.checked = !!atual.analytics;
+                ckMarketing.checked = !!atual.marketing;
+                prefs.hidden = !comPreferencias;
+                btnSalvar.hidden = !comPreferencias;
+                btnConfigurar.hidden = !!comPreferencias;
+                banner.hidden = false;
+                estado.cookies = true;
+                atualizaSticky();
+            }
+
+            function salvar(escolha) {
+                try { localStorage.setItem(CHAVE, JSON.stringify(escolha)); } catch (e) {}
+                gtag("consent", "update", {
+                    analytics_storage: escolha.analytics ? "granted" : "denied",
+                    ad_storage: escolha.marketing ? "granted" : "denied",
+                    ad_user_data: escolha.marketing ? "granted" : "denied",
+                    ad_personalization: escolha.marketing ? "granted" : "denied"
+                });
+                banner.hidden = true;
+                estado.cookies = false;
+                atualizaSticky();
+            }
+
+            document.getElementById("ck-aceitar").addEventListener("click", () => salvar({ analytics: true, marketing: true }));
+            document.getElementById("ck-recusar").addEventListener("click", () => salvar({ analytics: false, marketing: false }));
+            btnConfigurar.addEventListener("click", () => mostrarBanner(true));
+            btnSalvar.addEventListener("click", () => salvar({ analytics: ckAnalytics.checked, marketing: ckMarketing.checked }));
+            document.getElementById("abrir-cookies").addEventListener("click", () => mostrarBanner(true));
+
+            if (!lerConsentimento()) mostrarBanner(false);
+        })();
+
+        /* ---------- Efeitos ---------- */
+        (function () {
+            const reduzMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            /* Sombra no header ao rolar */
+            const header = document.querySelector(".site-header");
+            const aoRolar = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+            window.addEventListener("scroll", aoRolar, { passive: true });
+            aoRolar();
+
+            if (reduzMovimento || !("IntersectionObserver" in window)) return;
+
+            /* Surgimento gradual dos blocos ao rolar (em cascata dentro de cada grupo) */
+            const grupos = [
+                ".section-head", ".alertas-grid > *", ".aviso-tarifa", ".passos > *", ".comparativo", ".cta-meio",
+                ".publico-grid > *", ".doc-foto", ".doc-texto", ".bonus-livro", ".bonus-grid > div:last-child",
+                ".mapas-titulo", ".mapas-grid > *", ".bonus-cta", ".planos-grid > *", ".garantias > *",
+                "#aviso-telefone", ".faq > *", ".final .container > *", ".footer-grid > *"
+            ];
+            const alvos = [];
+            grupos.forEach((seletor) => {
+                document.querySelectorAll(seletor).forEach((el, i) => {
+                    el.classList.add("reveal");
+                    el.style.setProperty("--delay", Math.min(i * 90, 360) + "ms");
+                    alvos.push(el);
+                });
+            });
+
+            const revelar = (el) => {
+                if (el.classList.contains("is-visible")) return;
+                el.classList.add("is-visible");
+                io.unobserve(el);
+                // depois de aparecer, devolve o elemento ao estado normal (libera os efeitos de hover)
+                setTimeout(() => { el.classList.remove("reveal", "is-visible"); el.style.removeProperty("--delay"); }, 1200);
+            };
+            const io = new IntersectionObserver((entradas) => {
+                entradas.forEach((e) => { if (e.isIntersecting) revelar(e.target); });
+            }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+            alvos.forEach((el) => io.observe(el));
+
+            // garantia: se a pessoa pular direto para baixo (ex.: link "#planos"), nada fica escondido acima da tela
+            let agendado = false;
+            window.addEventListener("scroll", () => {
+                if (agendado) return;
+                agendado = true;
+                requestAnimationFrame(() => {
+                    agendado = false;
+                    document.querySelectorAll(".reveal:not(.is-visible)").forEach((el) => {
+                        if (el.getBoundingClientRect().top < window.innerHeight) revelar(el);
+                    });
+                });
+            }, { passive: true });
+
+            /* Números do bônus contando (59, 22, 90) */
+            const fatos = document.querySelector(".bonus-fatos");
+            if (fatos) {
+                const numeros = [...fatos.querySelectorAll("strong")];
+                const finais = numeros.map((n) => parseInt(n.textContent, 10));
+                const ioNum = new IntersectionObserver((entradas) => {
+                    if (!entradas[0].isIntersecting) return;
+                    ioNum.disconnect();
+                    const inicio = performance.now(), duracao = 1100;
+                    const passo = (agora) => {
+                        const t = Math.min((agora - inicio) / duracao, 1);
+                        const suave = 1 - Math.pow(1 - t, 3);
+                        numeros.forEach((n, i) => { n.textContent = Math.round(finais[i] * suave); });
+                        if (t < 1) requestAnimationFrame(passo);
+                    };
+                    requestAnimationFrame(passo);
+                }, { threshold: 0.6 });
+                ioNum.observe(fatos);
+            }
+
+            /* FAQ abrindo e fechando suave */
+            document.querySelectorAll(".faq details").forEach((d) => {
+                const resumo = d.querySelector("summary");
+                const conteudo = d.querySelector("p");
+                if (!conteudo || !conteudo.animate) return;
+                resumo.addEventListener("click", (ev) => {
+                    ev.preventDefault();
+                    if (d.classList.contains("fechando")) return;
+                    if (d.open) {
+                        d.classList.add("fechando");
+                        const anim = conteudo.animate(
+                            [{ height: conteudo.offsetHeight + "px", opacity: 1 }, { height: "0px", opacity: 0 }],
+                            { duration: 240, easing: "ease-in" }
+                        );
+                        anim.onfinish = () => { d.open = false; d.classList.remove("fechando"); };
+                    } else {
+                        d.open = true;
+                        conteudo.animate(
+                            [{ height: "0px", opacity: 0 }, { height: conteudo.offsetHeight + "px", opacity: 1 }],
+                            { duration: 320, easing: "cubic-bezier(.22,1,.36,1)" }
+                        );
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+</html>
