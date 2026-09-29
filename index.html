@@ -311,7 +311,33 @@
         .mapas-titulo { margin: 48px 0 16px; font-size: clamp(1.15rem, 4.6vw, 1.5rem); }
         .mapas-grid { display: grid; gap: 14px; }
         .mapa { margin: 0; background: var(--branco); border: 1px solid var(--linha); border-radius: var(--radius); overflow: hidden; }
-        .mapa img { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: contain; padding: 10px; background: #FFFFFF; border-bottom: 1px solid var(--linha); }
+        .mapa-zoom {
+            position: relative; display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in;
+            background: #FFFFFF; border-bottom: 1px solid var(--linha); overflow: hidden;
+        }
+        .mapa img { width: 100%; height: auto; } /* proporção natural: o mapa aparece inteiro */
+        .mapa-lupa {
+            position: absolute; right: 10px; bottom: 10px; display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 12px; border-radius: 999px; background: rgba(10, 42, 71, .88); color: var(--branco);
+            font: 600 13px/1 "Inter", sans-serif; box-shadow: 0 6px 16px rgba(10, 42, 71, .25);
+        }
+        .mapa-lupa svg { width: 16px; height: 16px; }
+
+        /* Mapa ampliado (lightbox) */
+        .lightbox {
+            width: min(1200px, 96vw); max-width: 96vw; max-height: 92vh; padding: 0; border: 0; border-radius: 18px;
+            background: var(--branco); color: var(--cinza); overflow: hidden;
+        }
+        .lightbox[open] { display: flex; flex-direction: column; animation: lightbox-abrir .3s var(--ease, ease) both; }
+        .lightbox::backdrop { background: rgba(6, 25, 44, .82); }
+        @keyframes lightbox-abrir { from { opacity: 0; transform: scale(.96); } to { opacity: 1; transform: none; } }
+        .lightbox-topo { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 10px 10px 10px 18px; border-bottom: 1px solid var(--linha); }
+        .lightbox-topo strong { font-family: "Sora", sans-serif; color: var(--navy); }
+        .lightbox-fechar { width: 44px; height: 44px; display: grid; place-items: center; border: 0; border-radius: 12px; background: var(--off-white); color: var(--navy); cursor: pointer; }
+        .lightbox-fechar svg { width: 22px; height: 22px; }
+        .lightbox-area { overflow: auto; -webkit-overflow-scrolling: touch; }
+        .lightbox-area img { display: block; width: max(100%, 860px); height: auto; max-width: none; }
+        .lightbox-dica { margin: 0; padding: 10px 16px; font-size: 13px; color: var(--cinza-2); text-align: center; border-top: 1px solid var(--linha); }
         .mapa figcaption { padding: 14px 16px 16px; font-size: 14px; color: var(--cinza-2); }
         .mapa figcaption b { display: block; font-family: "Sora", sans-serif; font-size: 16px; color: var(--navy); margin-bottom: 2px; }
         .bonus-cta { margin-top: 28px; text-align: center; }
@@ -440,7 +466,11 @@
             .doc-foto { width: 220px; height: 220px; }
             .bonus-grid { grid-template-columns: 280px 1fr; gap: 64px; }
             .bonus-livro { width: 100%; margin: 0; }
-            .mapas-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .mapas-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .mapas-grid > :first-child { grid-column: 1 / -1; }
+            .lightbox { width: auto; }
+            .lightbox-area img { width: auto; max-width: 100%; max-height: calc(92vh - 66px); margin: 0 auto; }
+            .lightbox-dica { display: none; }
             .planos-grid { grid-template-columns: 1fr 1fr; align-items: stretch; max-width: 880px; }
             .plano { padding: 32px 28px; }
             .plano .btn { width: 100%; }
@@ -569,6 +599,7 @@
         <symbol id="i-sino" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16V11a6 6 0 1 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></g></symbol>
         <symbol id="i-receita" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/></g></symbol>
         <symbol id="i-presente" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="17" height="4" rx="1"/><path d="M5 12v8.5h14V12M12 8v12.5M12 8c-1.5-3.5-5.5-3.5-5.5-1S10 8 12 8zm0 0c1.5-3.5 5.5-3.5 5.5-1S14 8 12 8z"/></g></symbol>
+        <symbol id="i-lupa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M10.5 7.5v6M7.5 10.5h6"/></g></symbol>
         <symbol id="i-pessoa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></g></symbol>
     </svg>
 
@@ -875,18 +906,41 @@
                 <h3 class="mapas-titulo">+ 3 mapas mentais para consultar na hora de emitir</h3>
                 <div class="mapas-grid">
                     <figure class="mapa">
-                        <img src="images/mapa-pontos-milhas.webp" alt="Mapa mental Pontos e Milhas: programas de milhas, programas de pontos, acúmulo e valores de referência do milheiro" width="640" height="314" loading="lazy">
+                        <button class="mapa-zoom" type="button" aria-label="Ampliar o mapa mental Pontos e Milhas">
+                            <img src="images/mapa-pontos-milhas.webp" alt="Mapa mental Pontos e Milhas: programas de milhas, programas de pontos, acúmulo e valores de referência do milheiro" width="1198" height="544" loading="lazy">
+                            <span class="mapa-lupa" aria-hidden="true"><svg><use href="#i-lupa"/></svg> Ampliar</span>
+                        </button>
                         <figcaption><b>Pontos e Milhas</b>Programas de milhas e de pontos, acúmulo e valor do milheiro.</figcaption>
                     </figure>
                     <figure class="mapa">
-                        <img src="images/mapa-cartoes.webp" alt="Mapa mental Cartões de Crédito: cartões black para começar, alta renda, cartões de companhia aérea e benefícios" width="640" height="456" loading="lazy">
+                        <button class="mapa-zoom" type="button" aria-label="Ampliar o mapa mental Cartões de Crédito">
+                            <img src="images/mapa-cartoes.webp" alt="Mapa mental Cartões de Crédito: cartões black para começar, alta renda, cartões de companhia aérea e benefícios" width="980" height="668" loading="lazy">
+                            <span class="mapa-lupa" aria-hidden="true"><svg><use href="#i-lupa"/></svg> Ampliar</span>
+                        </button>
                         <figcaption><b>Cartões de Crédito</b>Black para começar, alta renda, cobranded e benefícios.</figcaption>
                     </figure>
                     <figure class="mapa">
-                        <img src="images/mapa-emissoes.webp" alt="Mapa mental Emissões: companhias aéreas nacionais e internacionais e ferramentas de busca" width="417" height="651" loading="lazy">
+                        <button class="mapa-zoom" type="button" aria-label="Ampliar o mapa mental Emissões">
+                            <img src="images/mapa-emissoes.webp" alt="Mapa mental Emissões: companhias aéreas nacionais e internacionais e ferramentas de busca" width="931" height="632" loading="lazy">
+                            <span class="mapa-lupa" aria-hidden="true"><svg><use href="#i-lupa"/></svg> Ampliar</span>
+                        </button>
                         <figcaption><b>Emissões</b>Companhias nacionais e internacionais e ferramentas de busca.</figcaption>
                     </figure>
                 </div>
+
+                <!-- Mapa ampliado -->
+                <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-titulo">
+                    <div class="lightbox-topo">
+                        <strong id="lightbox-titulo">Mapa mental</strong>
+                        <button class="lightbox-fechar" type="button" aria-label="Fechar">
+                            <svg aria-hidden="true"><use href="#i-x"/></svg>
+                        </button>
+                    </div>
+                    <div class="lightbox-area">
+                        <img id="lightbox-img" src="" alt="">
+                    </div>
+                    <p class="lightbox-dica">Arraste para o lado para ver o mapa inteiro</p>
+                </dialog>
 
                 <div class="bonus-cta">
                     <a class="btn btn-amarelo" href="#planos">
@@ -1202,6 +1256,28 @@
             document.getElementById("abrir-cookies").addEventListener("click", () => mostrarBanner(true));
 
             if (!lerConsentimento()) mostrarBanner(false);
+        })();
+
+        /* ---------- Mapas mentais: ampliar ---------- */
+        (function () {
+            const caixa = document.getElementById("lightbox");
+            if (!caixa || typeof caixa.showModal !== "function") return;
+            const img = document.getElementById("lightbox-img");
+            const titulo = document.getElementById("lightbox-titulo");
+
+            document.querySelectorAll(".mapa-zoom").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const origem = btn.querySelector("img");
+                    img.src = origem.src;
+                    img.alt = origem.alt;
+                    titulo.textContent = btn.closest(".mapa").querySelector("figcaption b").textContent;
+                    caixa.showModal();
+                    caixa.querySelector(".lightbox-area").scrollLeft = 0;
+                });
+            });
+            caixa.querySelector(".lightbox-fechar").addEventListener("click", () => caixa.close());
+            // clicar fora do mapa fecha
+            caixa.addEventListener("click", (ev) => { if (ev.target === caixa) caixa.close(); });
         })();
 
         /* ---------- Efeitos ---------- */
