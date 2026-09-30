@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Termos de Uso | Doc das Milhas</title>
-    <meta name="description" content="Regras de uso da assinatura Doc das Milhas.">
+    <meta name="description" content="Regras da assinatura Doc das Milhas: o que o serviço entrega, pagamento, cancelamento, garantia, regras do grupo e responsabilidades.">
     <meta name="robots" content="noindex">
     <meta name="theme-color" content="#0A2A47">
     <link rel="canonical" href="https://docdasmilhas.com.br/termos-de-uso.html">
@@ -12,23 +12,36 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora:wght@700&display=swap" rel="stylesheet">
+    <!-- REVISAR_JURIDICAMENTE_ANTES_DO_LANCAMENTO: texto elaborado com base no CDC (Lei 8.078/1990),
+         no Decreto 7.962/2013 (comércio eletrônico), no Marco Civil da Internet, na LGPD e na
+         Lei 9.610/1998 (direitos autorais). Validar com advogado antes de anunciar. -->
     <style>
-        :root { --navy: #0A2A47; --turquesa-texto: #0E7C77; --amarelo: #E7BB30; --off-white: #F5F8F8; --cinza: #22384A; --linha: #DCE5E8; }
+        :root { --navy: #0A2A47; --turquesa-texto: #0E7C77; --amarelo: #E7BB30; --off-white: #F5F8F8; --cinza: #22384A; --cinza-2: #5B6B79; --linha: #DCE5E8; }
         * { box-sizing: border-box; }
-        body { margin: 0; font: 16px/1.7 "Inter", system-ui, sans-serif; color: var(--cinza); background: var(--off-white); }
+        html { scroll-padding-top: 16px; }
+        @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+        body { margin: 0; font: 16px/1.7 "Inter", system-ui, sans-serif; color: var(--cinza); background: var(--off-white); overflow-x: hidden; }
         .container { max-width: 760px; margin: 0 auto; padding: 0 20px; }
         header { background: #fff; border-bottom: 1px solid var(--linha); }
         header .container { height: 64px; display: flex; align-items: center; justify-content: space-between; }
         header img { height: 40px; width: auto; display: block; }
         header a.voltar { color: var(--turquesa-texto); font-weight: 600; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
-        main { padding: 40px 0 64px; }
-        h1, h2 { font-family: "Sora", sans-serif; color: var(--navy); line-height: 1.2; }
+        main { padding: 32px 0 64px; }
+        h1, h2, h3 { font-family: "Sora", sans-serif; color: var(--navy); line-height: 1.25; }
         h1 { font-size: clamp(1.7rem, 6vw, 2.4rem); margin: 0 0 8px; }
-        h2 { font-size: 1.2rem; margin: 36px 0 8px; }
-        ul { padding-left: 20px; }
+        h2 { font-size: 1.2rem; margin: 40px 0 10px; }
+        p { margin: 10px 0; }
+        ul, ol { padding-left: 20px; margin: 10px 0; }
+        li { margin: 6px 0; }
         a { color: var(--turquesa-texto); }
-        .ph, .revisar { display: inline-block; font: 600 12px/1.4 "Inter", sans-serif; color: #8A5A00; background: #FFF4D1; border: 1px dashed var(--amarelo); border-radius: 6px; padding: 2px 6px; }
-        .revisar { display: block; padding: 12px 14px; margin: 16px 0 8px; }
+        .meta { color: var(--cinza-2); font-size: 14px; }
+        .resumo { background: #fff; border: 1px solid var(--linha); border-left: 5px solid var(--amarelo); border-radius: 14px; padding: 16px 18px; margin: 20px 0; }
+        .resumo h2 { margin-top: 0; }
+        .destaque { background: #FFF8E3; border-radius: 12px; padding: 12px 14px; }
+        .indice { background: #fff; border: 1px solid var(--linha); border-radius: 14px; padding: 12px 18px; margin: 20px 0; font-size: 15px; }
+        .indice ol { margin: 6px 0; }
+        .indice a { text-decoration: none; display: inline-block; padding: 4px 0; }
+        .ph { display: inline-block; font: 600 12px/1.4 "Inter", sans-serif; color: #8A5A00; background: #FFF4D1; border: 1px dashed var(--amarelo); border-radius: 6px; padding: 2px 6px; }
         footer { background: #061D33; color: #A9BDCC; padding: 28px 0; font-size: 14px; }
         footer a { color: #D7E3EC; }
     </style>
@@ -44,52 +57,170 @@
     <main>
         <div class="container">
             <h1>Termos de Uso</h1>
-            <p>Última atualização: DD/MM/AAAA <span class="ph">PLACEHOLDER_BETA</span></p>
-            <p class="revisar">REVISAR_JURIDICAMENTE_ANTES_DO_LANCAMENTO — texto-base, não aprovado juridicamente.</p>
+            <p class="meta">Última atualização: 30 de setembro de 2026</p>
 
-            <h2>1. O serviço</h2>
-            <p>O Doc das Milhas é um serviço independente de curadoria que envia, em uma Comunidade do WhatsApp, alertas de oportunidades de passagens aéreas em milhas e em dinheiro, com orientações de emissão. Prestado por <span class="ph">PLACEHOLDER_BETA — nome/razão social e CNPJ ou CPF</span>.</p>
-            <p><strong>Não somos companhia aérea nem agência de viagens.</strong> Não vendemos, reservamos nem emitimos passagens. A compra é feita por você, diretamente na companhia aérea, no programa de fidelidade ou no site indicado, e é de sua responsabilidade.</p>
+            <div class="resumo">
+                <h2>Resumo em 30 segundos</h2>
+                <ul>
+                    <li>O Doc das Milhas <strong>encontra e explica oportunidades</strong> de passagens. <strong>Não vendemos nem emitimos passagens</strong> e não somos agência de viagens.</li>
+                    <li>Preços e disponibilidade são das companhias e dos programas de milhas e <strong>podem mudar a qualquer momento</strong>. Não garantimos que a tarifa ainda estará disponível.</li>
+                    <li>A assinatura <strong>renova automaticamente</strong>. Você cancela quando quiser, direto na Hotmart.</li>
+                    <li>Você tem <strong>7 dias de garantia</strong> na primeira compra.</li>
+                    <li>O acesso é <strong>pessoal</strong>: 1 assinatura = 1 número de WhatsApp. Compartilhar ou repassar os alertas leva à remoção.</li>
+                </ul>
+                <p class="meta" style="margin-bottom:0">O resumo não substitui o texto completo abaixo.</p>
+            </div>
 
-            <h2>2. Tarifas e disponibilidade</h2>
-            <p>Preços, quantidade de milhas e disponibilidade mudam rapidamente e dependem de terceiros. Cada alerta informa a data e a hora em que a oportunidade foi encontrada. Não garantimos que a tarifa ainda estará disponível quando você tentar emitir, nem economia mínima.</p>
+            <nav class="indice" aria-label="Índice">
+                <strong>Nesta página</strong>
+                <ol>
+                    <li><a href="#t1">Quem somos e aceitação</a></li>
+                    <li><a href="#t2">O que é o serviço</a></li>
+                    <li><a href="#t3">O que o serviço não é</a></li>
+                    <li><a href="#t4">Preços, tarifas e disponibilidade</a></li>
+                    <li><a href="#t5">Suas responsabilidades ao viajar</a></li>
+                    <li><a href="#t6">Planos, pagamento e renovação</a></li>
+                    <li><a href="#t7">Garantia, arrependimento e cancelamento</a></li>
+                    <li><a href="#t8">Bônus do plano anual</a></li>
+                    <li><a href="#t9">Acesso: 1 assinatura = 1 número</a></li>
+                    <li><a href="#t10">Regras da Comunidade</a></li>
+                    <li><a href="#t11">Propriedade intelectual</a></li>
+                    <li><a href="#t12">Plataformas de terceiros</a></li>
+                    <li><a href="#t13">Limites de responsabilidade</a></li>
+                    <li><a href="#t14">Suspensão e encerramento</a></li>
+                    <li><a href="#t15">Alterações</a></li>
+                    <li><a href="#t16">Disposições gerais e foro</a></li>
+                </ol>
+            </nav>
 
-            <h2>3. Assinatura e planos</h2>
+            <h2 id="t1">1. Quem somos e aceitação</h2>
+            <p>Estes Termos regulam a assinatura do <strong>Doc das Milhas</strong>, operado por <span class="ph">PLACEHOLDER_BETA — nome completo ou razão social</span>, inscrito no <span class="ph">PLACEHOLDER_BETA — CPF/CNPJ nº</span>, com endereço em <span class="ph">PLACEHOLDER_BETA — endereço completo</span>, e-mail <span class="ph">PLACEHOLDER_BETA — e-mail de suporte</span> ("Doc das Milhas", "nós").</p>
+            <p>Ao assinar, você ("assinante") declara ter <strong>18 anos ou mais</strong>, ter lido estes Termos e a <a href="politica-de-privacidade.html">Política de Privacidade</a> e concordar com eles. Se não concordar, não assine.</p>
+
+            <h2 id="t2">2. O que é o serviço</h2>
+            <p>O Doc das Milhas é um serviço de <strong>curadoria e conteúdo informativo e educacional</strong>. Por assinatura, você recebe, em um grupo de avisos de uma Comunidade do WhatsApp:</p>
             <ul>
-                <li><strong>Plano anual:</strong> R$ 197,00 por ano, cobrado pela Hotmart, à vista ou parcelado no cartão.</li>
-                <li><strong>Plano mensal:</strong> R$ 24,90 por mês, cobrado pela Hotmart por Pix Automático ou cartão.</li>
+                <li>alertas de oportunidades de passagens aéreas, em milhas e em dinheiro, selecionadas a partir de informações públicas de companhias aéreas, programas de fidelidade e sites de busca;</li>
+                <li>orientações gerais de como pesquisar e emitir cada oportunidade (a "receita").</li>
             </ul>
-            <p>A assinatura é renovada automaticamente ao fim de cada período, até que você a cancele.</p>
+            <p>A curadoria é um <strong>serviço de meio</strong>: nos comprometemos a acompanhar o mercado e a compartilhar as oportunidades que, a nosso critério, forem relevantes. <strong>Não há número mínimo de alertas</strong> por dia, semana ou mês. A quantidade varia conforme as oportunidades disponíveis, e pode haver períodos com poucos ou nenhum alerta. Rotas, origens e destinos dos alertas são definidos pela curadoria e podem não incluir a sua cidade ou o seu destino de interesse.</p>
 
-            <h2>4. Bônus do plano anual</h2>
-            <p>Quem assina o plano anual recebe, como bônus, a apostila “Milhas sem Mistério” e 3 mapas mentais (Pontos e Milhas, Cartões de Crédito e Emissões), enviados junto com o e-mail de acesso. O material é de uso pessoal e não pode ser revendido ou redistribuído.</p>
-
-            <h2>5. Garantia de 7 dias</h2>
-            <p>Você pode pedir reembolso total em até 7 dias após a primeira compra, diretamente pela Hotmart. A garantia vale para a primeira cobrança da assinatura; renovações não geram novo prazo de garantia. Após o reembolso, o acesso à Comunidade é removido.</p>
-
-            <h2>6. Cancelamento</h2>
-            <p>Você pode cancelar quando quiser, diretamente na Hotmart, sem precisar falar com a equipe. O acesso continua até o fim do período já pago e depois é removido.</p>
-
-            <h2>7. Acesso: uma assinatura, um número</h2>
+            <h2 id="t3">3. O que o serviço não é</h2>
             <ul>
-                <li>Cada assinatura ativa libera <strong>um</strong> número de WhatsApp: o informado no pagamento.</li>
-                <li>A entrada na Comunidade é aprovada manualmente, em até 12 horas, todos os dias, das 8h às 22h.</li>
-                <li>Para trocar de número, fale com o suporte informando o e-mail da compra e o código da transação. O número antigo é removido.</li>
-                <li>Compartilhar o link ou o acesso com terceiros é proibido. Números sem assinatura ativa correspondente são removidos.</li>
+                <li><strong>Não somos companhia aérea, agência de viagens, operadora de turismo nem intermediários</strong> da compra. Não vendemos, reservamos, emitimos, remarcamos ou cancelamos passagens.</li>
+                <li><strong>Não somos parceiros, representantes nem patrocinados</strong> por companhias aéreas, programas de fidelidade, bancos ou emissores de cartão. As marcas citadas pertencem aos seus titulares e são mencionadas apenas para fins informativos.</li>
+                <li><strong>Não é consultoria financeira, de investimentos ou de crédito.</strong> Menções a cartões de crédito, programas de pontos, compra de milhas ou transferências são informativas e gerais. A decisão de contratar cartão, pagar anuidade, comprar pontos ou assumir qualquer gasto é <strong>exclusivamente sua</strong>. Nunca gaste mais do que pode pagar para acumular milhas.</li>
+                <li><strong>Não é orientação médica nem de saúde.</strong> O Dr. Denner Cerqueira atua neste serviço exclusivamente como curador de viagens. Nenhum conteúdo do Doc das Milhas constitui consulta, diagnóstico ou orientação de saúde.</li>
             </ul>
 
-            <h2>8. Regras da Comunidade</h2>
+            <h2 id="t4">4. Preços, tarifas e disponibilidade</h2>
+            <p class="destaque">Preços, quantidade de milhas, taxas, datas e assentos são definidos por <strong>terceiros</strong> (companhias aéreas e programas de fidelidade), <strong>mudam rapidamente e sem aviso</strong> e podem se esgotar em minutos.</p>
             <ul>
-                <li>Somente a equipe publica no grupo de alertas.</li>
-                <li>É proibido copiar e redistribuir os alertas em outros grupos, canais ou redes com fins comerciais.</li>
-                <li>Comportamento abusivo ou uso indevido pode levar à remoção, sem prejuízo do direito de reembolso previsto em lei.</li>
+                <li>Cada alerta informa a data e a hora em que a oportunidade foi encontrada. <strong>Não garantimos</strong> que ela continuará disponível, com o mesmo preço ou nas mesmas condições, quando você tentar emitir.</li>
+                <li>Valores podem não incluir taxas de embarque, bagagem, assento, câmbio, IOF, tarifas de emissão ou outros custos cobrados por terceiros.</li>
+                <li>Tarifas promocionais ou com erro de preço podem ser <strong>canceladas pela própria companhia</strong>. Esse risco é do emissor da passagem, conforme as regras da companhia.</li>
+                <li>Exemplos exibidos no site são ilustrativos e não representam garantia de preço ou de economia.</li>
+                <li><strong>Não garantimos economia mínima</strong>, menor preço do mercado nem resultado específico. O proveito depende das suas datas, origem, flexibilidade, saldo de pontos e decisões.</li>
             </ul>
 
-            <h2>9. Alterações</h2>
-            <p>Estes termos podem ser atualizados. Mudanças de preço valem apenas para novas cobranças, com aviso prévio por e-mail.</p>
+            <h2 id="t5">5. Suas responsabilidades ao viajar</h2>
+            <p>Ao decidir comprar ou emitir uma passagem a partir de um alerta, <strong>a compra é feita por você, diretamente com o fornecedor</strong>, e você é o único responsável por:</p>
+            <ul>
+                <li>conferir preço, datas, nomes, horários, conexões, regras tarifárias, bagagem e condições de remarcação e cancelamento <strong>antes de pagar</strong>;</li>
+                <li>cumprir as regras dos programas de fidelidade (validade de pontos, transferências, taxas, clubes);</li>
+                <li>documentos de viagem: passaporte, vistos, vacinas, autorização de viagem de menores e exigências de entrada de cada país;</li>
+                <li>a relação com a companhia aérea, o programa ou o site de venda. Problemas com voo, atraso, cancelamento, reembolso ou remarcação devem ser tratados com eles.</li>
+            </ul>
 
-            <h2>10. Contato e foro</h2>
-            <p>Suporte: <span class="ph">PLACEHOLDER_BETA — e-mail de suporte</span> ou <a href="https://wa.me/553899591803" target="_blank" rel="noopener">WhatsApp (38) 9959-1803</a>. Foro: <span class="ph">PLACEHOLDER_BETA — comarca</span>.</p>
+            <h2 id="t6">6. Planos, pagamento e renovação</h2>
+            <ul>
+                <li><strong>Plano anual:</strong> R$ 197,00 por 12 meses, pago à vista ou parcelado no cartão, conforme condições da Hotmart. Inclui o bônus da seção 8.</li>
+                <li><strong>Plano mensal:</strong> R$ 24,90 por mês, por Pix Automático ou cartão.</li>
+                <li>O pagamento é processado pela <strong>Hotmart</strong>, que aplica suas próprias regras de pagamento, nota fiscal e segurança.</li>
+                <li><strong>Renovação automática:</strong> a assinatura renova ao fim de cada período, com nova cobrança no mesmo meio de pagamento, até que você cancele.</li>
+                <li><strong>Reajuste:</strong> podemos alterar preços para novas cobranças, com aviso prévio de pelo menos 30 dias. Se não concordar, basta cancelar antes da renovação. Assinantes com preço promocional ou de fundador mantêm o valor nas condições informadas na oferta.</li>
+                <li><strong>Pagamento não confirmado</strong> ou em atraso leva à suspensão e, depois, à remoção do grupo até a regularização.</li>
+            </ul>
+
+            <h2 id="t7">7. Garantia, arrependimento e cancelamento</h2>
+            <ul>
+                <li><strong>Garantia de 7 dias:</strong> você pode pedir reembolso integral em até 7 dias corridos após a <strong>primeira compra</strong>, diretamente na Hotmart, sem precisar justificar (art. 49 do CDC). Após o reembolso, o acesso ao grupo e ao bônus é encerrado.</li>
+                <li><strong>Renovações</strong> não abrem novo prazo de garantia. O cancelamento impede novas cobranças, mas o período já pago e iniciado não é reembolsado, salvo quando a lei determinar.</li>
+                <li><strong>Como cancelar:</strong> a qualquer momento, pela sua conta na Hotmart, sem precisar falar conosco. Se preferir, podemos te ajudar pelo suporte.</li>
+                <li>Após o cancelamento, o acesso continua até o fim do período pago e depois é removido.</li>
+                <li>Pedidos de estorno feitos diretamente ao banco ou à operadora do cartão (chargeback) por compra reconhecida levam ao encerramento imediato do acesso.</li>
+            </ul>
+
+            <h2 id="t8">8. Bônus do plano anual</h2>
+            <ul>
+                <li>O plano anual inclui, como bônus sem custo adicional, a apostila digital <strong>"Milhas sem Mistério"</strong> e <strong>3 mapas mentais</strong> (Pontos e Milhas, Cartões de Crédito e Emissões), enviados junto com as instruções de acesso.</li>
+                <li>O bônus é conteúdo educacional geral, válido na data da sua elaboração. <strong>Regras de programas, bônus de transferência e condições de cartões mudam com frequência</strong>; confira sempre as condições vigentes antes de decidir.</li>
+                <li>A licença de uso é <strong>pessoal</strong> (seção 11). Em caso de reembolso pela garantia, a licença é revogada e você deve apagar o material.</li>
+                <li>O bônus pode ser atualizado ou substituído por material equivalente.</li>
+            </ul>
+
+            <h2 id="t9">9. Acesso: 1 assinatura = 1 número</h2>
+            <ul>
+                <li>Cada assinatura ativa dá direito a <strong>1 (um) número de WhatsApp</strong>: o informado no pagamento. O acesso é pessoal e intransferível.</li>
+                <li>A entrada é aprovada <strong>manualmente</strong>, após conferência da compra, em até 12 horas, todos os dias, das 8h às 22h. Pode haver atrasos em situações excepcionais.</li>
+                <li>Para trocar de número, fale com o suporte informando o e-mail da compra e o código da transação. O número anterior é removido.</li>
+                <li>Números sem assinatura ativa correspondente são removidos a qualquer tempo.</li>
+            </ul>
+
+            <h2 id="t10">10. Regras da Comunidade</h2>
+            <p>É <strong>proibido</strong>:</p>
+            <ul>
+                <li>compartilhar o link de convite ou permitir que outra pessoa use o seu acesso;</li>
+                <li>copiar, encaminhar, publicar ou revender os alertas e as receitas, no todo ou em parte, em outros grupos, canais, redes sociais, sites ou serviços, com ou sem fins comerciais;</li>
+                <li>criar grupos "espelho", usar robôs, automações ou qualquer meio para extrair o conteúdo;</li>
+                <li>coletar números ou dados de outros membros, enviar spam, propaganda, correntes ou golpes;</li>
+                <li>publicar conteúdo ofensivo, discriminatório, ilegal ou que viole direitos de terceiros.</li>
+            </ul>
+            <p>O descumprimento autoriza <strong>advertência, suspensão ou remoção imediata</strong>, conforme a gravidade, <strong>sem restituição</strong> dos valores do período em curso (respeitado o direito de arrependimento da seção 7), sem prejuízo de medidas judiciais para reparação de danos.</p>
+
+            <h2 id="t11">11. Propriedade intelectual</h2>
+            <p>Os alertas, as receitas, textos, a apostila, os mapas mentais, a marca, o logotipo e a identidade visual do Doc das Milhas são protegidos pela Lei nº 9.610/1998 e pela Lei nº 9.279/1996. A assinatura concede uma <strong>licença pessoal, limitada, não exclusiva e intransferível</strong> para você consultar o conteúdo para uso próprio, enquanto ela estiver ativa. Nenhum direito de propriedade é transferido.</p>
+
+            <h2 id="t12">12. Plataformas de terceiros</h2>
+            <ul>
+                <li>O serviço depende de plataformas que não controlamos, principalmente o <strong>WhatsApp (Meta)</strong> e a <strong>Hotmart</strong>. Instabilidades, bloqueios, mudanças de funcionalidades, de regras ou de privacidade dessas plataformas estão fora do nosso controle.</li>
+                <li>Se o WhatsApp deixar de ser viável, poderemos migrar a entrega para outro canal equivalente (por exemplo, outra plataforma de mensagens ou e-mail), com aviso prévio, mantendo a essência do serviço.</li>
+                <li>Links para sites de terceiros são oferecidos por conveniência. Não respondemos pelo conteúdo, pela segurança nem pelas práticas desses sites.</li>
+                <li>Alguns links poderão ser de <strong>parceiros ou afiliados</strong>, o que pode nos gerar comissão <strong>sem custo adicional para você</strong>. Isso não altera os critérios da curadoria.</li>
+            </ul>
+
+            <h2 id="t13">13. Limites de responsabilidade</h2>
+            <p>Na máxima extensão permitida pela legislação, e sem afastar direitos que o Código de Defesa do Consumidor garante a você, o Doc das Milhas <strong>não responde</strong> por:</p>
+            <ul>
+                <li>alteração, indisponibilidade ou esgotamento de tarifas, assentos ou condições informadas nos alertas;</li>
+                <li>atos, falhas, cancelamentos, atrasos, cobranças ou regras de companhias aéreas, programas de fidelidade, bancos, sites de venda e demais terceiros;</li>
+                <li>decisões de compra, emissão, contratação de cartões ou gastos que você tomar com base no conteúdo;</li>
+                <li>falhas de internet, do seu aparelho ou das plataformas de terceiros (seção 12);</li>
+                <li>danos causados por uso do serviço em desacordo com estes Termos.</li>
+            </ul>
+            <p>Havendo falha comprovada na prestação do serviço, nossa responsabilidade se limita ao que a lei determinar, sendo o valor pago pela assinatura no período em que ocorreu a falha a referência para eventual restituição, salvo disposição legal em contrário.</p>
+
+            <h2 id="t14">14. Suspensão e encerramento do serviço</h2>
+            <p>Podemos descontinuar o Doc das Milhas mediante <strong>aviso prévio de 30 dias</strong>. Nesse caso, assinantes do plano anual receberão a devolução proporcional aos meses não utilizados, e as cobranças mensais serão interrompidas. O acesso pode ser suspenso imediatamente em caso de violação destes Termos, suspeita fundada de fraude ou determinação legal.</p>
+
+            <h2 id="t15">15. Alterações</h2>
+            <p>Podemos atualizar estes Termos. A versão vigente estará sempre nesta página, com a data de atualização. Mudanças relevantes serão avisadas por e-mail ou no grupo com antecedência razoável. Se não concordar, você pode cancelar antes de a mudança valer. Continuar usando o serviço após esse prazo significa concordância.</p>
+
+            <h2 id="t16">16. Disposições gerais e foro</h2>
+            <ul>
+                <li>Comunicações oficiais serão feitas pelo e-mail informado na compra ou pelo grupo. Mantenha seus dados atualizados.</li>
+                <li>Se alguma cláusula for considerada inválida, as demais continuam válidas.</li>
+                <li>A tolerância com algum descumprimento não significa renúncia a direitos.</li>
+                <li>Antes de qualquer medida, fale conosco: a maioria das situações se resolve rápido pelo suporte. Você também pode usar a plataforma pública <a href="https://www.consumidor.gov.br" target="_blank" rel="noopener">consumidor.gov.br</a>.</li>
+                <li>Estes Termos são regidos pelas leis brasileiras. Fica eleito o foro do <strong>domicílio do consumidor</strong>, nos termos do Código de Defesa do Consumidor.</li>
+            </ul>
+
+            <h2>Contato</h2>
+            <ul>
+                <li>E-mail: <span class="ph">PLACEHOLDER_BETA — e-mail de suporte</span></li>
+                <li>WhatsApp: <a href="https://wa.me/553899591803" target="_blank" rel="noopener">(38) 9959-1803</a></li>
+            </ul>
+            <p class="meta">Consulte também a <a href="politica-de-privacidade.html">Política de Privacidade</a>.</p>
         </div>
     </main>
 

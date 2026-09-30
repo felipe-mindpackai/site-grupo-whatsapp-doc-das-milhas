@@ -216,7 +216,16 @@
         .bubble .b-hora { position: absolute; right: 10px; bottom: 4px; font-size: 10px; color: #8A98A3; }
 
         /* ---------- Alertas recentes ---------- */
-        .alertas-grid { display: grid; gap: 16px; }
+        /* celular: cards lado a lado com arrastar (economiza rolagem); desktop: grade */
+        .alertas-grid, .mapas-grid {
+            display: grid; gap: 14px; grid-auto-flow: column; grid-auto-columns: 86%;
+            overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 20px;
+            margin: 0 -20px; padding: 4px 20px 14px; scrollbar-width: none;
+        }
+        .alertas-grid::-webkit-scrollbar, .mapas-grid::-webkit-scrollbar { display: none; }
+        .alertas-grid > *, .mapas-grid > * { scroll-snap-align: start; }
+        .mapas-grid { align-items: start; }
+        .dica-arraste { margin-top: 2px; font-size: 13px; color: var(--cinza-2); text-align: center; }
         .alerta-card {
             background: var(--branco); border: 1px solid var(--linha); border-radius: var(--radius); padding: 20px;
         }
@@ -267,14 +276,54 @@
         .publico-nao li svg { color: #B0414B; }
 
         /* ---------- Quem está por trás ---------- */
-        .doc { display: grid; gap: 24px; align-items: center; }
-        .doc-foto {
-            width: 160px; height: 160px; border-radius: 50%; margin: 0 auto;
-            display: grid; place-items: center; background: var(--navy-2); border: 3px dashed var(--turquesa); color: #7FE0D9;
+        .doc { display: grid; gap: 28px; align-items: center; }
+        .doc-foto { position: relative; width: 200px; margin: 0 auto; }
+        .doc-foto img {
+            width: 100%; height: auto; aspect-ratio: 1; border-radius: 50%; object-fit: cover;
+            border: 4px solid var(--turquesa); box-shadow: 0 0 0 8px rgba(34, 184, 176, .15), 0 24px 48px rgba(0, 0, 0, .35);
         }
-        .doc-foto svg { width: 64px; height: 64px; }
-        .doc h2 { font-size: clamp(1.5rem, 5.6vw, 2.2rem); margin-top: 12px; }
+        .doc-selo {
+            position: absolute; left: 50%; bottom: -14px; transform: translateX(-50%); white-space: nowrap;
+            padding: 6px 14px; border-radius: 999px; background: var(--amarelo); color: var(--navy);
+            font: 700 12px/1.2 "Sora", sans-serif; box-shadow: 0 8px 20px rgba(231, 187, 48, .35);
+        }
+        .doc h2 { font-size: clamp(1.7rem, 6.4vw, 2.4rem); margin-top: 12px; }
+        .doc-sub { margin-top: 6px !important; color: var(--turquesa); font-weight: 600; }
         .doc-texto p { margin-top: 12px; }
+        .doc-numeros { list-style: none; margin: 22px 0 0; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+        .doc-numeros li { padding: 12px 6px; border-radius: 14px; background: rgba(255, 255, 255, .06); border: 1px solid rgba(255, 255, 255, .1); text-align: center; }
+        .doc-numeros strong { display: block; font: 800 1.6rem/1 "Sora", sans-serif; color: var(--amarelo); }
+        .doc-numeros span { display: block; margin-top: 4px; font-size: 12px; line-height: 1.3; color: #B8CAD8; }
+        .doc-numeros strong span { display: inline; margin: 0; font: inherit; color: inherit; }
+
+        /* Galeria de viagens: carrossel no celular, mosaico no desktop */
+        .galeria-titulo { margin: 48px 0 16px; font-size: clamp(1.2rem, 4.8vw, 1.6rem); }
+        .galeria {
+            display: grid; grid-auto-flow: column; grid-auto-columns: 72%; gap: 12px;
+            overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 20px;
+            margin: 0 -20px; padding: 4px 20px 12px; scrollbar-width: none;
+        }
+        .galeria::-webkit-scrollbar { display: none; }
+        .foto {
+            position: relative; display: block; padding: 0; border: 0; border-radius: 18px; overflow: hidden;
+            aspect-ratio: 4 / 5; scroll-snap-align: start; cursor: zoom-in; background: var(--navy-2);
+        }
+        .foto img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease, ease); }
+        .foto::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(6, 25, 44, .75)); pointer-events: none; }
+        .foto-legenda {
+            position: absolute; left: 14px; bottom: 12px; z-index: 1; color: var(--branco);
+            font: 700 15px/1.2 "Sora", sans-serif; text-shadow: 0 2px 8px rgba(0, 0, 0, .4);
+        }
+        .galeria-dica { margin-top: 4px; font-size: 13px; color: #8FA6B8; text-align: center; }
+        .destinos { list-style: none; margin: 20px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .destinos li { padding: 6px 12px; border-radius: 999px; background: rgba(34, 184, 176, .14); color: #7FE0D9; font-size: 13px; font-weight: 600; }
+        .destinos .destinos-brasil { background: var(--amarelo); color: var(--navy); }
+        .doc-cta { text-align: center; margin-top: 28px; }
+
+        /* Hero: quem faz a curadoria */
+        .hero-autor { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 14px; font-size: 14px; color: #C9D8E3; text-decoration: none; }
+        .hero-autor img { width: 36px; height: 36px; border-radius: 50%; border: 2px solid var(--turquesa); object-fit: cover; flex: none; }
+        .hero-autor b { color: var(--branco); }
         .assinatura {
             margin-top: 20px; padding: 16px 18px; border-left: 4px solid var(--amarelo); border-radius: 0 12px 12px 0;
             background: rgba(255,255,255,.06); font-style: italic; color: var(--branco);
@@ -284,7 +333,7 @@
         /* ---------- Bônus do plano anual ---------- */
         .bonus-secao { background: linear-gradient(180deg, var(--off-white) 0%, #FFF8E3 100%); overflow: hidden; }
         .bonus-grid { display: grid; gap: 36px; align-items: center; }
-        .bonus-livro { position: relative; width: min(260px, 70%); margin: 8px auto 0; aspect-ratio: 520 / 735; }
+        .bonus-livro { position: relative; width: min(190px, 55%); margin: 8px auto 0; aspect-ratio: 520 / 735; }
         .bonus-livro img { position: absolute; inset: 0; width: 100%; height: 100%; border-radius: 4px 10px 10px 4px; }
         .livro-sumario { transform: translate(16%, 3%) rotate(5deg); box-shadow: 0 12px 30px rgba(10, 42, 71, .18); }
         .livro-capa { box-shadow: 0 24px 50px rgba(10, 42, 71, .35), inset 6px 0 0 rgba(0,0,0,.15); }
@@ -309,7 +358,7 @@
         }
         .bonus-partes b { color: var(--navy); }
         .mapas-titulo { margin: 48px 0 16px; font-size: clamp(1.15rem, 4.6vw, 1.5rem); }
-        .mapas-grid { display: grid; gap: 14px; }
+
         .mapa { margin: 0; background: var(--branco); border: 1px solid var(--linha); border-radius: var(--radius); overflow: hidden; }
         .mapa-zoom {
             position: relative; display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in;
@@ -338,6 +387,11 @@
         .lightbox-area { overflow: auto; -webkit-overflow-scrolling: touch; }
         .lightbox-area img { display: block; width: max(100%, 860px); height: auto; max-width: none; }
         .lightbox-dica { margin: 0; padding: 10px 16px; font-size: 13px; color: var(--cinza-2); text-align: center; border-top: 1px solid var(--linha); }
+        /* fotos de viagem: cabem inteiras na tela (sem arrastar) */
+        .lightbox--foto { background: #0B1B2B; }
+        .lightbox--foto .lightbox-topo { background: var(--branco); }
+        .lightbox--foto .lightbox-area img { width: 100%; max-width: 100%; max-height: calc(92vh - 66px); object-fit: contain; margin: 0 auto; }
+        .lightbox--foto .lightbox-dica { display: none; }
         .mapa figcaption { padding: 14px 16px 16px; font-size: 14px; color: var(--cinza-2); }
         .mapa figcaption b { display: block; font-family: "Sora", sans-serif; font-size: 16px; color: var(--navy); margin-bottom: 2px; }
         .bonus-cta { margin-top: 28px; text-align: center; }
@@ -378,6 +432,8 @@
             background: #FFF4D1; border-left: 5px solid var(--amarelo); color: var(--navy); font-size: 15px;
         }
         .aviso-telefone svg { width: 26px; height: 26px; color: var(--navy); }
+        .aceite { margin-top: 14px; font-size: 13px; line-height: 1.5; color: var(--cinza-2); text-align: center; }
+        .aceite a { color: var(--turquesa-texto); font-weight: 600; }
         .checkout-pendente { margin-top: 12px; padding: 12px 14px; border-radius: 12px; background: #FDE8EA; color: #7A1F28; font-size: 14px; }
 
         /* ---------- FAQ ---------- */
@@ -456,14 +512,27 @@
             .hero-rota { width: 520px; right: -40px; top: 10px; }
             .hero .btn-amarelo { min-width: 380px; }
             .hero .microcopy { text-align: left; }
+            .alertas-grid, .mapas-grid { grid-auto-flow: row; grid-auto-columns: auto; overflow: visible; margin: 0; padding: 0; }
             .alertas-grid { grid-template-columns: repeat(3, 1fr); }
+            .dica-arraste { display: none; }
             .passos { grid-template-columns: repeat(3, 1fr); gap: 20px; }
             .passo { grid-template-columns: 1fr; padding: 24px; }
             .comparativo { font-size: 15px; }
             .comparativo th, .comparativo td { padding: 16px 20px; }
             .publico-grid { grid-template-columns: 1fr 1fr; }
-            .doc { grid-template-columns: 220px 1fr; gap: 40px; }
-            .doc-foto { width: 220px; height: 220px; }
+            .doc { grid-template-columns: 260px 1fr; gap: 56px; }
+            .doc-foto { width: 260px; }
+            .hero-autor { justify-content: flex-start; }
+            .galeria {
+                grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); grid-auto-columns: auto;
+                overflow: visible; margin: 0; padding: 0; gap: 14px;
+            }
+            .foto { aspect-ratio: 1; }
+            .foto-destaque { grid-column: span 2; grid-row: span 2; }
+            .foto-larga { grid-column: span 2; aspect-ratio: auto; }
+            .foto-larga img { position: absolute; inset: 0; } /* altura segue as fotos quadradas da mesma linha */
+            .galeria-dica { display: none; }
+            @media (hover: hover) { .foto:hover img { transform: scale(1.06); } }
             .bonus-grid { grid-template-columns: 280px 1fr; gap: 64px; }
             .bonus-livro { width: 100%; margin: 0; }
             .mapas-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -516,6 +585,7 @@
         .js .hero-grid > div:first-child > :nth-child(4) { animation-delay: .24s; }
         .js .hero-grid > div:first-child > :nth-child(5) { animation-delay: .32s; }
         .js .hero-grid > div:first-child > :nth-child(6) { animation-delay: .38s; }
+        .js .hero-grid > div:first-child > :nth-child(7) { animation-delay: .46s; }
         .js .phone { animation: surgir-celular .9s var(--ease) .3s both; }
 
         /* Celular: "digitando…" e depois a mensagem chega */
@@ -600,7 +670,6 @@
         <symbol id="i-receita" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h5"/></g></symbol>
         <symbol id="i-presente" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="8" width="17" height="4" rx="1"/><path d="M5 12v8.5h14V12M12 8v12.5M12 8c-1.5-3.5-5.5-3.5-5.5-1S10 8 12 8zm0 0c1.5-3.5 5.5-3.5 5.5-1S14 8 12 8z"/></g></symbol>
         <symbol id="i-lupa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M10.5 7.5v6M7.5 10.5h6"/></g></symbol>
-        <symbol id="i-pessoa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></g></symbol>
     </svg>
 
     <!-- HEADER -->
@@ -644,6 +713,10 @@
                         Quero entrar no grupo VIP do WhatsApp
                     </a>
                     <p class="microcopy">Pagamento seguro pela Hotmart. Cancele quando quiser.</p>
+                    <a class="hero-autor" href="#quem">
+                        <img src="images/denner-perfil.webp" alt="" width="36" height="36">
+                        <span>Curadoria do <b>Dr. Denner Cerqueira</b> · 10 anos viajando com milhas</span>
+                    </a>
                 </div>
 
                 <div class="phone-wrap">
@@ -728,7 +801,84 @@
                     </article>
                 </div>
 
+                <p class="dica-arraste" aria-hidden="true">Arraste para o lado para ver mais alertas</p>
                 <p class="aviso-tarifa">Exemplos ilustrativos com valores de referência. Nos alertas do grupo, cada oportunidade vem com data e hora — preços e disponibilidade mudam rápido.</p>
+            </div>
+        </section>
+
+        <!-- QUEM ESTÁ POR TRÁS -->
+        <section class="section section-navy" id="quem" aria-labelledby="titulo-doc">
+            <div class="container">
+                <div class="doc">
+                    <div class="doc-foto">
+                        <img src="images/denner-perfil.webp" alt="Dr. Denner Cerqueira" width="440" height="440" loading="lazy">
+                        <span class="doc-selo">10 anos viajando com milhas</span>
+                    </div>
+                    <div class="doc-texto">
+                        <span class="eyebrow">Quem está por trás</span>
+                        <h2 id="titulo-doc">Dr. Denner Cerqueira</h2>
+                        <p class="doc-sub">Médico em saúde mental e apaixonado por viagens.</p>
+                        <p>Há cerca de dez anos, viajar virou parte da minha vida. Conheci países, culturas e paisagens que ficaram marcados na minha história.</p>
+                        <p>Muitas dessas viagens só foram possíveis, ou ficaram muito mais baratas, porque aprendi a usar do jeito certo cartões de crédito, pontos, milhas e transferências bonificadas.</p>
+                        <p>Criei o Doc das Milhas para compartilhar o que aprendi na prática: faço a curadoria das oportunidades no grupo VIP e reuni o método na apostila e nos mapas mentais.</p>
+                        <p class="assinatura">“Não se trata de gastar mais para gerar milhas. Trata-se de <b>aproveitar melhor aquilo que você já gasta</b>.”</p>
+
+                        <ul class="doc-numeros" aria-label="Viagens do Dr. Denner">
+                            <li><strong class="contador">10</strong><span>anos usando milhas</span></li>
+                            <li><strong class="contador">7</strong><span>países visitados</span></li>
+                            <li><strong><span class="contador">11</span>+DF</strong><span>estados do Brasil</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="galeria-titulo">Para onde as milhas já me levaram</h3>
+                <div class="galeria">
+                    <button class="foto js-ampliar foto-destaque" type="button" data-titulo="Veneza, Itália">
+                        <img src="images/viagem-veneza-por-do-sol.webp" alt="Dr. Denner no pôr do sol em Veneza, Itália" width="750" height="1000" loading="lazy">
+                        <span class="foto-legenda">Veneza, Itália</span>
+                    </button>
+                    <button class="foto js-ampliar" type="button" data-titulo="Museus do Vaticano">
+                        <img src="images/viagem-vaticano.webp" alt="Dr. Denner na Galeria dos Mapas, nos Museus do Vaticano" width="675" height="900" loading="lazy">
+                        <span class="foto-legenda">Vaticano</span>
+                    </button>
+                    <button class="foto js-ampliar" type="button" data-titulo="Alpes suíços">
+                        <img src="images/viagem-alpes.webp" alt="Dr. Denner e acompanhante na neve dos Alpes suíços" width="675" height="900" loading="lazy">
+                        <span class="foto-legenda">Alpes suíços</span>
+                    </button>
+                    <button class="foto js-ampliar" type="button" data-titulo="Veneza, Itália">
+                        <img src="images/viagem-veneza-canal.webp" alt="Dr. Denner e acompanhante em uma ponte sobre canal de Veneza" width="675" height="900" loading="lazy">
+                        <span class="foto-legenda">Canais de Veneza</span>
+                    </button>
+                    <button class="foto js-ampliar" type="button" data-titulo="Verona, Itália">
+                        <img src="images/viagem-verona.webp" alt="Dr. Denner e acompanhante na Casa de Julieta, em Verona" width="675" height="900" loading="lazy">
+                        <span class="foto-legenda">Verona, Itália</span>
+                    </button>
+                    <button class="foto js-ampliar foto-larga" type="button" data-titulo="Coliseu, Roma">
+                        <img src="images/viagem-coliseu.webp" alt="Dr. Denner e acompanhante em frente ao Coliseu, em Roma" width="900" height="675" loading="lazy">
+                        <span class="foto-legenda">Coliseu, Roma</span>
+                    </button>
+                    <button class="foto js-ampliar" type="button" data-titulo="Ponte dos Suspiros, Veneza">
+                        <img src="images/viagem-ponte-dos-suspiros.webp" alt="Dr. Denner e acompanhante em frente à Ponte dos Suspiros, em Veneza" width="675" height="900" loading="lazy">
+                        <span class="foto-legenda">Ponte dos Suspiros</span>
+                    </button>
+                    <button class="foto js-ampliar" type="button" data-titulo="Suíça">
+                        <img src="images/viagem-suica.webp" alt="Dr. Denner em frente a uma torre medieval sobre o lago, na Suíça" width="675" height="900" loading="lazy">
+                        <span class="foto-legenda">Suíça</span>
+                    </button>
+                </div>
+                <p class="galeria-dica" aria-hidden="true">Arraste para o lado · toque para ampliar</p>
+
+                <ul class="destinos" aria-label="Países visitados">
+                    <li>Itália</li><li>Suíça</li><li>França</li><li>Estados Unidos</li><li>Chile</li><li>Egito</li><li>Catar</li>
+                    <li class="destinos-brasil">+ 11 estados do Brasil</li>
+                </ul>
+
+                <div class="cta-meio doc-cta">
+                    <a class="btn btn-amarelo" href="#planos">
+                        <svg aria-hidden="true"><use href="#i-whatsapp"/></svg>
+                        Quero entrar no grupo VIP do WhatsApp
+                    </a>
+                </div>
             </div>
         </section>
 
@@ -839,21 +989,6 @@
             </div>
         </section>
 
-        <!-- QUEM ESTÁ POR TRÁS — preencher com a pessoa real -->
-        <section class="section section-navy" aria-labelledby="titulo-doc">
-            <div class="container doc">
-                <div class="doc-foto" aria-hidden="true">
-                    <svg><use href="#i-pessoa"/></svg>
-                </div>
-                <div class="doc-texto">
-                    <span class="eyebrow">Quem está por trás</span>
-                    <h2 id="titulo-doc">Nome do Doc <span class="ph">PLACEHOLDER_BETA</span></h2>
-                    <p>História curta: quem é, por que começou a caçar passagens e quanto já viajou usando milhas. <span class="ph">PLACEHOLDER_BETA</span></p>
-                    <p class="assinatura">Organização de médico. Paixão por viagens. <b>Método em cada milha.</b></p>
-                </div>
-            </div>
-        </section>
-
         <!-- DEPOIMENTOS — só ativar com depoimentos REAIS e autorizados do beta.
              Para ativar, remova as marcações de comentário deste bloco.
         <section class="section section-white" aria-labelledby="titulo-depoimentos">
@@ -888,9 +1023,9 @@
                         <p class="bonus-lead">O grupo mostra a oportunidade. A apostila ensina você a acumular milhas, proteger o que acumulou e trocar na hora certa, para aproveitar cada alerta.</p>
 
                         <ul class="bonus-fatos" aria-label="Sobre a apostila">
-                            <li><strong>59</strong><span>páginas</span></li>
-                            <li><strong>22</strong><span>capítulos</span></li>
-                            <li><strong>90</strong><span>dias de plano prático</span></li>
+                            <li><strong class="contador">59</strong><span>páginas</span></li>
+                            <li><strong class="contador">22</strong><span>capítulos</span></li>
+                            <li><strong class="contador">90</strong><span>dias de plano prático</span></li>
                         </ul>
 
                         <ol class="bonus-partes">
@@ -927,6 +1062,8 @@
                         <figcaption><b>Emissões</b>Companhias nacionais e internacionais e ferramentas de busca.</figcaption>
                     </figure>
                 </div>
+
+                <p class="dica-arraste" aria-hidden="true">Arraste para o lado · toque para ampliar</p>
 
                 <!-- Mapa ampliado -->
                 <dialog class="lightbox" id="lightbox" aria-labelledby="lightbox-titulo">
@@ -1009,6 +1146,7 @@
                     <svg aria-hidden="true"><use href="#i-celular"/></svg>
                     <span><strong>No pagamento, informe o número de WhatsApp que você usará no grupo.</strong> Uma assinatura ativa libera um número.</span>
                 </p>
+                <p class="aceite">Ao assinar, você concorda com os <a href="termos-de-uso.html">Termos de Uso</a> e a <a href="politica-de-privacidade.html">Política de Privacidade</a>. Assinatura com renovação automática; cancele quando quiser na Hotmart.</p>
             </div>
         </section>
 
@@ -1034,7 +1172,7 @@
                     </details>
                     <details>
                         <summary>Onde recebo os alertas?</summary>
-                        <p>Numa Comunidade do WhatsApp, em um grupo onde só a equipe publica. Seu número fica oculto para os outros membros.</p>
+                        <p>Numa Comunidade do WhatsApp, em um grupo onde só a equipe publica. Pela configuração atual do WhatsApp, seu número fica oculto para os outros membros.</p>
                     </details>
                     <details>
                         <summary>Como recebo o acesso depois de pagar?</summary>
@@ -1121,7 +1259,8 @@
             </div>
             <div class="footer-bottom">
                 <p>O Doc das Milhas é um serviço independente de curadoria de oportunidades. Não somos companhia aérea nem agência de viagens.</p>
-                <p>© 2026 Doc das Milhas · CNPJ <span class="ph">PLACEHOLDER_BETA</span></p>
+                <p>© 2026 Doc das Milhas · <span class="ph">PLACEHOLDER_BETA — nome/razão social</span> · CPF/CNPJ <span class="ph">PLACEHOLDER_BETA</span> · <span class="ph">PLACEHOLDER_BETA — endereço</span></p>
+                <p>Preços e disponibilidade das passagens são definidos pelas companhias aéreas e programas de fidelidade e podem mudar a qualquer momento. As marcas citadas pertencem aos seus titulares e não têm vínculo com o Doc das Milhas.</p>
             </div>
         </div>
     </footer>
@@ -1265,12 +1404,15 @@
             const img = document.getElementById("lightbox-img");
             const titulo = document.getElementById("lightbox-titulo");
 
-            document.querySelectorAll(".mapa-zoom").forEach((btn) => {
+            // serve para os mapas mentais (.mapa-zoom) e para as fotos de viagem (.js-ampliar)
+            document.querySelectorAll(".mapa-zoom, .js-ampliar").forEach((btn) => {
                 btn.addEventListener("click", () => {
                     const origem = btn.querySelector("img");
+                    const ehFoto = btn.classList.contains("js-ampliar");
                     img.src = origem.src;
                     img.alt = origem.alt;
-                    titulo.textContent = btn.closest(".mapa").querySelector("figcaption b").textContent;
+                    titulo.textContent = ehFoto ? btn.dataset.titulo : btn.closest(".mapa").querySelector("figcaption b").textContent;
+                    caixa.classList.toggle("lightbox--foto", ehFoto);
                     caixa.showModal();
                     caixa.querySelector(".lightbox-area").scrollLeft = 0;
                 });
@@ -1295,7 +1437,7 @@
             /* Surgimento gradual dos blocos ao rolar (em cascata dentro de cada grupo) */
             const grupos = [
                 ".section-head", ".alertas-grid > *", ".aviso-tarifa", ".passos > *", ".comparativo", ".cta-meio",
-                ".publico-grid > *", ".doc-foto", ".doc-texto", ".bonus-livro", ".bonus-grid > div:last-child",
+                ".publico-grid > *", ".doc-foto", ".doc-texto", ".galeria-titulo", ".galeria > *", ".destinos", ".bonus-livro", ".bonus-grid > div:last-child",
                 ".mapas-titulo", ".mapas-grid > *", ".bonus-cta", ".planos-grid > *", ".garantias > *",
                 "#aviso-telefone", ".faq > *", ".final .container > *", ".footer-grid > *"
             ];
@@ -1333,25 +1475,21 @@
                 });
             }, { passive: true });
 
-            /* Números do bônus contando (59, 22, 90) */
-            const fatos = document.querySelector(".bonus-fatos");
-            if (fatos) {
-                const numeros = [...fatos.querySelectorAll("strong")];
-                const finais = numeros.map((n) => parseInt(n.textContent, 10));
-                const ioNum = new IntersectionObserver((entradas) => {
-                    if (!entradas[0].isIntersecting) return;
-                    ioNum.disconnect();
-                    const inicio = performance.now(), duracao = 1100;
-                    const passo = (agora) => {
-                        const t = Math.min((agora - inicio) / duracao, 1);
-                        const suave = 1 - Math.pow(1 - t, 3);
-                        numeros.forEach((n, i) => { n.textContent = Math.round(finais[i] * suave); });
-                        if (t < 1) requestAnimationFrame(passo);
-                    };
-                    requestAnimationFrame(passo);
-                }, { threshold: 0.6 });
-                ioNum.observe(fatos);
-            }
+            /* Números contando de 0 até o valor (qualquer elemento .contador) */
+            const contar = (el) => {
+                const final = parseInt(el.textContent, 10);
+                const inicio = performance.now(), duracao = 1100;
+                const passo = (agora) => {
+                    const t = Math.min((agora - inicio) / duracao, 1);
+                    el.textContent = Math.round(final * (1 - Math.pow(1 - t, 3)));
+                    if (t < 1) requestAnimationFrame(passo);
+                };
+                requestAnimationFrame(passo);
+            };
+            const ioNum = new IntersectionObserver((entradas) => {
+                entradas.forEach((e) => { if (e.isIntersecting) { ioNum.unobserve(e.target); contar(e.target); } });
+            }, { threshold: 0.6 });
+            document.querySelectorAll(".contador").forEach((el) => ioNum.observe(el));
 
             /* FAQ abrindo e fechando suave */
             document.querySelectorAll(".faq details").forEach((d) => {

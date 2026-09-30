@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>Política de Privacidade | Doc das Milhas</title>
-    <meta name="description" content="Como o Doc das Milhas coleta, usa e protege os seus dados.">
+    <meta name="description" content="Como o Doc das Milhas coleta, usa, compartilha e protege os seus dados pessoais, conforme a LGPD.">
     <meta name="robots" content="noindex">
     <meta name="theme-color" content="#0A2A47">
     <link rel="canonical" href="https://docdasmilhas.com.br/politica-de-privacidade.html">
@@ -12,25 +12,43 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Sora:wght@700&display=swap" rel="stylesheet">
+    <!-- REVISAR_JURIDICAMENTE_ANTES_DO_LANCAMENTO: texto elaborado com base na LGPD (Lei 13.709/2018),
+         no Marco Civil da Internet (Lei 12.965/2014) e no CDC. Validar com advogado antes de anunciar. -->
     <style>
-        :root { --navy: #0A2A47; --turquesa-texto: #0E7C77; --amarelo: #E7BB30; --off-white: #F5F8F8; --cinza: #22384A; --linha: #DCE5E8; }
+        :root { --navy: #0A2A47; --turquesa-texto: #0E7C77; --amarelo: #E7BB30; --off-white: #F5F8F8; --cinza: #22384A; --cinza-2: #5B6B79; --linha: #DCE5E8; }
         * { box-sizing: border-box; }
-        body { margin: 0; font: 16px/1.7 "Inter", system-ui, sans-serif; color: var(--cinza); background: var(--off-white); }
+        html { scroll-padding-top: 16px; }
+        @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+        body { margin: 0; font: 16px/1.7 "Inter", system-ui, sans-serif; color: var(--cinza); background: var(--off-white); overflow-x: hidden; }
         .container { max-width: 760px; margin: 0 auto; padding: 0 20px; }
         header { background: #fff; border-bottom: 1px solid var(--linha); }
         header .container { height: 64px; display: flex; align-items: center; justify-content: space-between; }
         header img { height: 40px; width: auto; display: block; }
         header a.voltar { color: var(--turquesa-texto); font-weight: 600; text-decoration: none; min-height: 44px; display: inline-flex; align-items: center; }
-        main { padding: 40px 0 64px; }
-        h1, h2 { font-family: "Sora", sans-serif; color: var(--navy); line-height: 1.2; }
+        main { padding: 32px 0 64px; }
+        h1, h2, h3 { font-family: "Sora", sans-serif; color: var(--navy); line-height: 1.25; }
         h1 { font-size: clamp(1.7rem, 6vw, 2.4rem); margin: 0 0 8px; }
-        h2 { font-size: 1.2rem; margin: 36px 0 8px; }
-        ul { padding-left: 20px; }
+        h2 { font-size: 1.2rem; margin: 40px 0 10px; }
+        h3 { font-size: 1rem; margin: 20px 0 6px; }
+        p { margin: 10px 0; }
+        ul, ol { padding-left: 20px; margin: 10px 0; }
+        li { margin: 6px 0; }
         a { color: var(--turquesa-texto); }
-        .ph, .revisar { display: inline-block; font: 600 12px/1.4 "Inter", sans-serif; color: #8A5A00; background: #FFF4D1; border: 1px dashed var(--amarelo); border-radius: 6px; padding: 2px 6px; }
-        .revisar { display: block; padding: 12px 14px; margin: 16px 0 8px; }
+        .meta { color: var(--cinza-2); font-size: 14px; }
+        .resumo { background: #fff; border: 1px solid var(--linha); border-left: 5px solid var(--amarelo); border-radius: 14px; padding: 16px 18px; margin: 20px 0; }
+        .resumo h2 { margin-top: 0; }
+        .indice { background: #fff; border: 1px solid var(--linha); border-radius: 14px; padding: 12px 18px; margin: 20px 0; font-size: 15px; }
+        .indice ol { margin: 6px 0; }
+        .indice a { text-decoration: none; display: inline-block; padding: 4px 0; }
+        /* "tabelas" em cartões: legíveis no celular sem rolagem lateral */
+        .cartoes { display: grid; gap: 10px; margin: 12px 0; }
+        .cartao { background: #fff; border: 1px solid var(--linha); border-radius: 12px; padding: 12px 14px; font-size: 15px; }
+        .cartao b { display: block; color: var(--navy); }
+        .cartao span { display: block; color: var(--cinza-2); font-size: 14px; }
+        .ph { display: inline-block; font: 600 12px/1.4 "Inter", sans-serif; color: #8A5A00; background: #FFF4D1; border: 1px dashed var(--amarelo); border-radius: 6px; padding: 2px 6px; }
         footer { background: #061D33; color: #A9BDCC; padding: 28px 0; font-size: 14px; }
         footer a { color: #D7E3EC; }
+        @media (min-width: 768px) { .cartoes { grid-template-columns: 1fr 1fr; } }
     </style>
 </head>
 <body>
@@ -44,52 +62,151 @@
     <main>
         <div class="container">
             <h1>Política de Privacidade</h1>
-            <p>Última atualização: DD/MM/AAAA <span class="ph">PLACEHOLDER_BETA</span></p>
-            <p class="revisar">REVISAR_JURIDICAMENTE_ANTES_DO_LANCAMENTO — texto-base, não aprovado juridicamente.</p>
+            <p class="meta">Última atualização: 30 de setembro de 2026</p>
 
-            <h2>1. Quem somos</h2>
-            <p>O Doc das Milhas é um serviço independente de curadoria de oportunidades de passagens aéreas, entregue por assinatura em uma Comunidade do WhatsApp. O controlador dos dados é <span class="ph">PLACEHOLDER_BETA — nome/razão social e CNPJ ou CPF</span>.</p>
+            <div class="resumo">
+                <h2>Resumo em 30 segundos</h2>
+                <ul>
+                    <li>Usamos seus dados <strong>só para entregar a assinatura</strong>: confirmar a compra, liberar e controlar o acesso ao grupo e dar suporte.</li>
+                    <li><strong>Não vemos nem guardamos dados do seu cartão.</strong> O pagamento é processado pela Hotmart.</li>
+                    <li><strong>Não vendemos seus dados.</strong> Compartilhamos apenas com os serviços necessários (Hotmart, WhatsApp e, se você permitir, Google e Meta para medir anúncios).</li>
+                    <li>Cookies de análise e marketing só funcionam <strong>se você autorizar</strong> no banner.</li>
+                    <li>Você pode pedir acesso, correção ou exclusão dos seus dados a qualquer momento.</li>
+                </ul>
+            </div>
 
-            <h2>2. Quais dados tratamos</h2>
+            <nav class="indice" aria-label="Índice">
+                <strong>Nesta página</strong>
+                <ol>
+                    <li><a href="#p1">Quem é o responsável</a></li>
+                    <li><a href="#p2">Quais dados tratamos</a></li>
+                    <li><a href="#p3">Para que usamos e com qual base legal</a></li>
+                    <li><a href="#p4">Com quem compartilhamos</a></li>
+                    <li><a href="#p5">Transferência internacional</a></li>
+                    <li><a href="#p6">Cookies e tecnologias de medição</a></li>
+                    <li><a href="#p7">Grupo e Comunidade no WhatsApp</a></li>
+                    <li><a href="#p8">Por quanto tempo guardamos</a></li>
+                    <li><a href="#p9">Segurança</a></li>
+                    <li><a href="#p10">Seus direitos</a></li>
+                    <li><a href="#p11">Menores de idade</a></li>
+                    <li><a href="#p12">Alterações desta política</a></li>
+                    <li><a href="#p13">Contato</a></li>
+                </ol>
+            </nav>
+
+            <h2 id="p1">1. Quem é o responsável pelos seus dados</h2>
+            <p>O <strong>Doc das Milhas</strong> é um serviço de curadoria de oportunidades de passagens aéreas operado por <span class="ph">PLACEHOLDER_BETA — nome completo ou razão social</span>, inscrito no <span class="ph">PLACEHOLDER_BETA — CPF/CNPJ nº</span>, com endereço em <span class="ph">PLACEHOLDER_BETA — endereço completo</span> ("Doc das Milhas", "nós").</p>
+            <p>Para os fins da Lei Geral de Proteção de Dados (Lei nº 13.709/2018 — LGPD), o Doc das Milhas é o <strong>controlador</strong> dos dados tratados para prestar o serviço. O canal de atendimento ao titular está na seção 13.</p>
+
+            <h2 id="p2">2. Quais dados tratamos</h2>
+            <h3>2.1. Dados que recebemos da Hotmart quando você compra</h3>
             <ul>
-                <li><strong>Dados da compra</strong> (nome, e-mail, telefone e código da transação), recebidos da Hotmart, que processa o pagamento. Não temos acesso aos dados do seu cartão.</li>
-                <li><strong>Número de WhatsApp</strong> usado para pedir entrada na Comunidade.</li>
-                <li><strong>Dados de navegação</strong> neste site (páginas visitadas, cliques, origem da visita e parâmetros de campanha), por meio de cookies, somente conforme a sua escolha no banner.</li>
+                <li>nome, e-mail e telefone (WhatsApp) informados no pagamento;</li>
+                <li>código da transação, plano contratado, datas e status da assinatura (ativa, cancelada, reembolsada, em atraso).</li>
+            </ul>
+            <p>Os <strong>dados de pagamento</strong> (cartão, dados bancários, CPF para nota fiscal) são coletados e tratados diretamente pela <strong>Hotmart</strong>, sob a política de privacidade dela. Nós não temos acesso ao número do seu cartão.</p>
+
+            <h3>2.2. Dados do WhatsApp</h3>
+            <ul>
+                <li>o número usado para pedir entrada na Comunidade;</li>
+                <li>mensagens que você nos envia no suporte.</li>
             </ul>
 
-            <h2>3. Para que usamos</h2>
+            <h3>2.3. Dados de navegação neste site</h3>
             <ul>
-                <li>Confirmar a assinatura e liberar o acesso à Comunidade (uma assinatura ativa = um número).</li>
-                <li>Remover o acesso em caso de cancelamento, reembolso ou inadimplência.</li>
-                <li>Prestar suporte, inclusive troca de número.</li>
-                <li>Medir o desempenho do site e dos anúncios, quando você autoriza.</li>
+                <li>registros de acesso (endereço IP, data e hora), mantidos pelo provedor de hospedagem e, quando aplicável, por nós, como exige o Marco Civil da Internet;</li>
+                <li>páginas visitadas, cliques nos botões, origem da visita e parâmetros de campanha (ex.: <code>utm_source</code>), <strong>apenas com o seu consentimento</strong> para cookies de análise e marketing;</li>
+                <li>a sua escolha sobre cookies, guardada no seu próprio navegador.</li>
+            </ul>
+            <p>Não pedimos nem tratamos intencionalmente <strong>dados pessoais sensíveis</strong> (saúde, religião, orientação sexual etc.). Não envie esse tipo de informação pelo suporte.</p>
+
+            <h2 id="p3">3. Para que usamos e com qual base legal</h2>
+            <div class="cartoes">
+                <div class="cartao"><b>Confirmar a compra e liberar o acesso ao grupo</b><span>Execução de contrato (art. 7º, V, LGPD)</span></div>
+                <div class="cartao"><b>Controlar a regra "1 assinatura = 1 número", remover acessos cancelados e evitar compartilhamento indevido</b><span>Execução de contrato e legítimo interesse (art. 7º, V e IX)</span></div>
+                <div class="cartao"><b>Suporte, troca de número e comunicações sobre a assinatura</b><span>Execução de contrato (art. 7º, V)</span></div>
+                <div class="cartao"><b>Prevenir fraudes e proteger o serviço</b><span>Legítimo interesse (art. 7º, IX) e proteção ao crédito (art. 7º, X)</span></div>
+                <div class="cartao"><b>Cumprir obrigações fiscais, contábeis e legais e guardar registros de acesso</b><span>Cumprimento de obrigação legal (art. 7º, II)</span></div>
+                <div class="cartao"><b>Defender nossos direitos em reclamações, processos ou perante órgãos públicos</b><span>Exercício regular de direitos (art. 7º, VI)</span></div>
+                <div class="cartao"><b>Medir visitas e resultados de anúncios (Google Analytics, Google Ads, Meta)</b><span>Consentimento (art. 7º, I), que você pode retirar a qualquer momento</span></div>
+                <div class="cartao"><b>Publicar depoimentos, nome ou imagem de assinantes</b><span>Somente com autorização expressa e específica</span></div>
+            </div>
+            <p>Quando usamos o <strong>legítimo interesse</strong>, tratamos apenas o mínimo necessário e respeitamos suas expectativas e seus direitos. Você pode se opor a esse uso pelo canal da seção 13.</p>
+            <p><strong>Não tomamos decisões automatizadas</strong> que afetem seus interesses. A liberação de acesso é feita manualmente.</p>
+
+            <h2 id="p4">4. Com quem compartilhamos</h2>
+            <p>Não vendemos nem alugamos dados pessoais. Compartilhamos somente o necessário com:</p>
+            <ul>
+                <li><strong>Hotmart:</strong> processa pagamentos, emite comunicações da compra e administra assinaturas, cancelamentos e reembolsos. Atua como controladora independente dos dados de pagamento.</li>
+                <li><strong>Meta / WhatsApp:</strong> plataforma onde a Comunidade funciona. O uso do WhatsApp está sujeito aos termos e à política de privacidade da Meta.</li>
+                <li><strong>Google e Meta (Pixel):</strong> somente com o seu consentimento, para análise de audiência e medição de anúncios.</li>
+                <li><strong>Ferramentas de operação:</strong> serviço de planilha na nuvem (controle de acessos, com acesso restrito), e-mail, hospedagem do site (GitHub Pages) e armazenamento.</li>
+                <li><strong>Contador e assessores</strong> profissionais, sob dever de sigilo, quando necessário.</li>
+                <li><strong>Autoridades públicas</strong>, quando houver obrigação legal, ordem judicial ou requisição válida.</li>
+                <li>Em caso de <strong>reorganização, venda ou transferência</strong> do negócio, os dados poderão ser transferidos ao sucessor, que ficará obrigado a respeitar esta política.</li>
             </ul>
 
-            <h2>4. Controle de acessos</h2>
-            <p>Mantemos um registro interno de acessos (planilha de uso restrito, com verificação em duas etapas) com e-mail da compra, código da transação, telefone informado, telefone aprovado, plano, datas e status. Esse registro serve apenas para garantir que cada assinatura libere um único número e para remover quem não tem assinatura ativa.</p>
+            <h2 id="p5">5. Transferência internacional</h2>
+            <p>Alguns fornecedores (como Google, Meta e GitHub) armazenam dados em servidores fora do Brasil. Essas transferências ocorrem porque são necessárias para executar o serviço que você contratou ou com base no seu consentimento, e esses fornecedores adotam cláusulas contratuais e medidas de segurança compatíveis com a LGPD (art. 33).</p>
 
-            <h2>5. WhatsApp e privacidade entre membros</h2>
-            <p>Os alertas são enviados em uma Comunidade do WhatsApp em que somente a equipe publica. Nessa configuração, o seu número fica oculto para os demais membros, visível apenas para os administradores. O uso do WhatsApp também segue a política de privacidade da Meta.</p>
+            <h2 id="p6">6. Cookies e tecnologias de medição</h2>
+            <div class="cartoes">
+                <div class="cartao"><b>Essenciais — sempre ativos</b><span>Guardam a sua escolha sobre cookies e garantem o funcionamento básico do site.</span></div>
+                <div class="cartao"><b>Análise — só com consentimento</b><span>Google Analytics 4: páginas vistas e cliques, para melhorar o site.</span></div>
+                <div class="cartao"><b>Marketing — só com consentimento</b><span>Google Ads e Meta Pixel: medir quais anúncios geraram visitas e compras.</span></div>
+            </div>
+            <p>Você escolhe no banner ao entrar no site e pode mudar a escolha quando quiser em <strong>"Preferências de cookies"</strong>, no rodapé da página inicial. Também é possível bloquear ou apagar cookies nas configurações do seu navegador. Os parâmetros de campanha da URL podem ser repassados ao checkout da Hotmart para atribuição da venda.</p>
 
-            <h2>6. Cookies e ferramentas de terceiros</h2>
+            <h2 id="p7">7. Grupo e Comunidade no WhatsApp</h2>
             <ul>
-                <li><strong>Essenciais:</strong> necessários para o site funcionar e para lembrar a sua escolha de cookies.</li>
-                <li><strong>Análise:</strong> Google Analytics 4 (visitas e cliques).</li>
-                <li><strong>Marketing:</strong> Google Ads e Meta Pixel (medir resultados dos anúncios).</li>
+                <li>Os alertas são enviados em uma Comunidade do WhatsApp em que <strong>somente a equipe publica</strong>.</li>
+                <li>Pela configuração atual do WhatsApp, o número dos membros fica oculto para os demais participantes da Comunidade e visível para os administradores. Essa funcionalidade é controlada pela Meta e pode mudar sem aviso; <strong>não temos como garantir</strong> o funcionamento de recursos de terceiros.</li>
+                <li>Se você interagir (reações, respostas, mensagens diretas a outros membros), essas informações podem ficar visíveis a terceiros. Você é responsável pelo que decidir compartilhar.</li>
+                <li>Ao sair ou ser removido, você deixa de receber novos alertas. Mensagens já recebidas permanecem no seu aparelho.</li>
             </ul>
-            <p>Cookies de análise e de marketing só são ativados com o seu consentimento. Você pode mudar a escolha a qualquer momento em “Preferências de cookies”, no rodapé da página inicial.</p>
 
-            <h2>7. Compartilhamento</h2>
-            <p>Compartilhamos dados apenas com quem é necessário para prestar o serviço: Hotmart (pagamento e e-mails), Meta/WhatsApp (entrega dos alertas), Google e Meta (medição de anúncios, se autorizado). Não vendemos dados.</p>
+            <h2 id="p8">8. Por quanto tempo guardamos</h2>
+            <ul>
+                <li><strong>Dados da assinatura e do controle de acessos:</strong> enquanto a assinatura estiver ativa e por até <strong>5 anos</strong> após o fim, para cumprir obrigações legais e para defesa em eventuais reclamações (prazo do art. 27 do CDC e prazos fiscais).</li>
+                <li><strong>Registros de acesso ao site:</strong> no mínimo 6 meses, conforme o Marco Civil da Internet.</li>
+                <li><strong>Mensagens de suporte:</strong> pelo tempo necessário para resolver o atendimento e comprovar o que foi tratado.</li>
+                <li><strong>Dados de cookies:</strong> conforme a validade de cada ferramenta, ou até você retirar o consentimento.</li>
+            </ul>
+            <p>Encerrados esses prazos, os dados são eliminados ou anonimizados.</p>
 
-            <h2>8. Por quanto tempo guardamos</h2>
-            <p>Enquanto a assinatura estiver ativa e, depois disso, pelo prazo necessário para cumprir obrigações legais ou resolver eventuais disputas. <span class="ph">PLACEHOLDER_BETA — definir prazo</span></p>
+            <h2 id="p9">9. Segurança</h2>
+            <p>Adotamos medidas técnicas e administrativas razoáveis: acesso restrito ao controle de acessos, autenticação em dois fatores nas contas da operação, mínimo de dados necessários e treinamento de quem opera o serviço. Nenhum sistema é 100% seguro. Se ocorrer um incidente que possa gerar risco ou dano relevante, comunicaremos os titulares afetados e a Autoridade Nacional de Proteção de Dados (ANPD), nos termos do art. 48 da LGPD.</p>
+            <p>Você também protege seus dados: não compartilhe o link do grupo, mantenha seu WhatsApp com verificação em duas etapas e desconfie de mensagens que peçam senhas ou pagamentos em nosso nome. <strong>Nunca pedimos senha, código de verificação ou dados de cartão.</strong></p>
 
-            <h2>9. Seus direitos (LGPD)</h2>
-            <p>Você pode pedir confirmação do tratamento, acesso, correção, anonimização, portabilidade, eliminação dos dados, informação sobre compartilhamento e revogação do consentimento, nos termos do art. 18 da Lei 13.709/2018.</p>
+            <h2 id="p10">10. Seus direitos</h2>
+            <p>Nos termos do art. 18 da LGPD, você pode pedir, a qualquer momento:</p>
+            <ul>
+                <li>confirmação de que tratamos seus dados e acesso a eles;</li>
+                <li>correção de dados incompletos, inexatos ou desatualizados;</li>
+                <li>anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade;</li>
+                <li>portabilidade;</li>
+                <li>eliminação dos dados tratados com base no consentimento;</li>
+                <li>informação sobre com quem compartilhamos;</li>
+                <li>informação sobre a possibilidade de não consentir e suas consequências;</li>
+                <li>revogação do consentimento;</li>
+                <li>oposição a tratamento baseado em legítimo interesse.</li>
+            </ul>
+            <p>Responderemos em até <strong>15 dias</strong>. Para sua segurança, podemos pedir informações para confirmar sua identidade, como o e-mail da compra e o código da transação. Alguns dados podem ser mantidos mesmo após o pedido de exclusão, quando a lei exigir ou para exercício regular de direitos (art. 16 da LGPD). A exclusão de dados necessários ao serviço implica o encerramento do acesso. Você também pode apresentar reclamação à ANPD.</p>
 
-            <h2>10. Contato</h2>
-            <p>Para exercer seus direitos ou tirar dúvidas: <span class="ph">PLACEHOLDER_BETA — e-mail de suporte</span> ou <a href="https://wa.me/553899591803" target="_blank" rel="noopener">WhatsApp (38) 9959-1803</a>.</p>
+            <h2 id="p11">11. Menores de idade</h2>
+            <p>O serviço é destinado a <strong>maiores de 18 anos</strong>. Não coletamos intencionalmente dados de crianças e adolescentes. Se identificarmos esse caso, os dados serão eliminados e o acesso encerrado.</p>
+
+            <h2 id="p12">12. Alterações desta política</h2>
+            <p>Podemos atualizar esta política para refletir mudanças no serviço ou na lei. A versão vigente estará sempre nesta página, com a data de atualização. Mudanças relevantes serão comunicadas por e-mail ou no grupo.</p>
+
+            <h2 id="p13">13. Contato e canal do titular</h2>
+            <p>Para dúvidas sobre privacidade ou para exercer seus direitos:</p>
+            <ul>
+                <li>E-mail: <span class="ph">PLACEHOLDER_BETA — e-mail de privacidade/suporte</span></li>
+                <li>WhatsApp: <a href="https://wa.me/553899591803" target="_blank" rel="noopener">(38) 9959-1803</a></li>
+            </ul>
+            <p>Responsável pelo atendimento ao titular: <span class="ph">PLACEHOLDER_BETA — nome do responsável</span>.</p>
+            <p class="meta">Consulte também os <a href="termos-de-uso.html">Termos de Uso</a>.</p>
         </div>
     </main>
 
